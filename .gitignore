@@ -37,3 +37,12 @@ data/processed/working_dataset.csv
 # Keep publishable summary outputs
 !data/processed/top10_per_category.csv
 !data/processed/top10_per_category_raw_score.csv
+
+# Upload selected data artifacts
+!data/by_id.zip
+!data/processed/scored_dataset.csv
+!data/processed/experimental_compounds.csv
+!data/processed/clscore_all_results.csv
+!data/processed/all_material_ids_for_clscore.csv
+!data/processed/featured_dataset.csv
+!data/processed/working_dataset.csv

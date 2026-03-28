@@ -1,0 +1,7 @@
+data/by_id.zip filter=lfs diff=lfs merge=lfs -text
+data/processed/scored_dataset.csv filter=lfs diff=lfs merge=lfs -text
+data/processed/featured_dataset.csv filter=lfs diff=lfs merge=lfs -text
+data/processed/working_dataset.csv filter=lfs diff=lfs merge=lfs -text
+data/processed/experimental_compounds.csv filter=lfs diff=lfs merge=lfs -text
+data/processed/clscore_all_results.csv filter=lfs diff=lfs merge=lfs -text
+data/processed/all_material_ids_for_clscore.csv filter=lfs diff=lfs merge=lfs -text
