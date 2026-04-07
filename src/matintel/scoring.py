@@ -37,6 +37,20 @@ def _is_metal(symbol: str) -> bool:
         return False
 
 
+def _mean_atomic_number(elems: set[str]) -> float:
+    if not elems:
+        return np.nan
+    zs: list[float] = []
+    for sym in elems:
+        try:
+            zs.append(float(Element(sym).Z))
+        except Exception:
+            continue
+    if not zs:
+        return np.nan
+    return float(np.mean(zs))
+
+
 def score_battery_cathode_liion(composition, structure, band_gap, formation_energy, e_hull, features):
     elems = _elements(composition)
     if "Li" not in elems:
@@ -636,38 +650,671 @@ def score_multiferroic(composition, structure, band_gap, formation_energy, e_hul
     return _clamp(score)
 
 
+def score_supercapacitor_electrode(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"C", "N", "O", "S"}:
+        score += 0.2
+    if elems & {"Mn", "Ni", "Co", "Fe", "V", "Mo", "Ru"}:
+        score += 0.35
+    if not np.isnan(band_gap) and band_gap < 1.2:
+        score += 0.2
+    if not np.isnan(formation_energy) and formation_energy < -0.4:
+        score += 0.15
+    if elems & {"Ru", "Ir"}:
+        score *= 0.8
+    return _clamp(score)
+
+
+def score_redox_flow_battery_electrolyte(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"V", "Fe", "Cr", "Mn", "Ti", "Zn"}:
+        score += 0.35
+    if elems & {"S", "N", "O", "P"}:
+        score += 0.2
+    if not np.isnan(band_gap) and _in_range(band_gap, 0.2, 3.0):
+        score += 0.15
+    if not np.isnan(formation_energy) and formation_energy < -0.3:
+        score += 0.15
+    if elems & {"Co", "Ni"}:
+        score += 0.05
+    return _clamp(score)
+
+
+def score_sodium_sulfur_battery(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if "Na" in elems:
+        score += 0.25
+    if "S" in elems:
+        score += 0.25
+    if elems & {"Al", "Si", "Zr", "Y", "O", "Cl"}:
+        score += 0.2
+    if not np.isnan(band_gap) and band_gap >= 1.5:
+        score += 0.15
+    if not np.isnan(formation_energy) and formation_energy < -0.8:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_photovoltaic_perovskite_stabiliser(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Pb", "Sn", "Ge", "Bi", "Sb"}:
+        score += 0.25
+    if elems & {"I", "Br", "Cl"}:
+        score += 0.25
+    if elems & {"Cs", "Rb", "K", "Na", "Ca", "Sr", "Ba"}:
+        score += 0.2
+    if not np.isnan(band_gap) and _in_range(band_gap, 1.2, 2.8):
+        score += 0.15
+    if not np.isnan(formation_energy) and formation_energy < -0.2:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_luminescent_solar_concentrator(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Eu", "Tb", "Ce", "Y", "La", "Gd", "Dy", "Yb", "Er"}:
+        score += 0.35
+    if elems & {"Cd", "Zn", "Se", "S", "Te", "In", "Ga"}:
+        score += 0.2
+    if not np.isnan(band_gap) and _in_range(band_gap, 1.8, 3.4):
+        score += 0.25
+    if not np.isnan(formation_energy) and formation_energy < -0.4:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_nitrogen_reduction_catalyst(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Fe", "Mo", "Ru", "Co", "Ni", "V", "Ti"}:
+        score += 0.4
+    if elems & {"N", "S", "P", "C"}:
+        score += 0.2
+    if not np.isnan(band_gap) and band_gap < 1.5:
+        score += 0.2
+    if not np.isnan(formation_energy) and formation_energy < -0.3:
+        score += 0.1
+    if elems & {"Ru"}:
+        score *= 0.85
+    return _clamp(score)
+
+
+def score_methane_activation_catalyst(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Fe", "Co", "Ni", "Cu", "Mo", "W", "Pd", "Pt", "Rh"}:
+        score += 0.4
+    if elems & {"O", "N", "S", "P"}:
+        score += 0.15
+    if not np.isnan(band_gap) and band_gap < 2.0:
+        score += 0.2
+    if not np.isnan(formation_energy) and formation_energy < -0.2:
+        score += 0.1
+    if elems & {"Pt", "Rh", "Pd"}:
+        score *= 0.85
+    return _clamp(score)
+
+
+def score_nox_reduction_catalyst(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"V", "W", "Ti", "Cu", "Fe", "Mn", "Ce"}:
+        score += 0.45
+    if "O" in elems:
+        score += 0.2
+    if not np.isnan(band_gap) and band_gap < 2.5:
+        score += 0.15
+    if not np.isnan(formation_energy) and formation_energy < -0.8:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_phase_change_memory(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Ge", "Sb", "Te", "Se", "Sn", "In"}:
+        score += 0.5
+    if not np.isnan(band_gap) and _in_range(band_gap, 0.0, 1.0):
+        score += 0.25
+    if not np.isnan(formation_energy) and formation_energy < -0.1:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_highk_dielectric(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Hf", "Zr", "Ta", "Nb", "Ti", "Al", "La", "Y"}:
+        score += 0.45
+    if elems & {"O", "N"}:
+        score += 0.2
+    if not np.isnan(band_gap) and band_gap >= 3.5:
+        score += 0.25
+    if not np.isnan(formation_energy) and formation_energy < -1.0:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_nonlinear_optical(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"B", "P", "Nb", "Ta", "Ti", "W", "Mo", "Te", "I"}:
+        score += 0.4
+    if elems & {"O", "F", "Cl", "Br", "I", "S", "Se"}:
+        score += 0.2
+    if not np.isnan(band_gap) and band_gap >= 2.0:
+        score += 0.2
+    if not np.isnan(formation_energy) and formation_energy < -0.5:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_spintronic_mtj(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Fe", "Co", "Ni", "Mn", "Cr"}:
+        score += 0.45
+    if elems & {"Mg", "Al", "O", "N"}:
+        score += 0.2
+    if not np.isnan(band_gap) and band_gap < 1.0:
+        score += 0.2
+    if not np.isnan(formation_energy) and formation_energy < -0.2:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_qubit_host(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems <= {"C"} or elems <= {"Si", "C"}:
+        score += 0.35
+    if elems & {"C", "Si", "Ge", "Al", "O", "N", "Y"}:
+        score += 0.2
+    if not np.isnan(band_gap) and band_gap >= 2.0:
+        score += 0.25
+    if not np.isnan(formation_energy) and formation_energy < -0.5:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_topological_qubit_majorana(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Bi", "Sb", "Te", "Se", "In", "Sn", "Hg"}:
+        score += 0.4
+    if elems & {"Nb", "Pb", "Al", "V"}:
+        score += 0.2
+    if not np.isnan(band_gap) and band_gap <= 0.4:
+        score += 0.2
+    if not np.isnan(formation_energy) and formation_energy < -0.1:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_biodegradable_implant(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Mg", "Zn", "Ca", "Fe", "Mn", "Sr"}:
+        score += 0.4
+    if elems & {"P", "O", "C"}:
+        score += 0.2
+    if not elems & {"Cd", "Hg", "Pb", "As", "Tl"}:
+        score += 0.2
+    if not np.isnan(formation_energy) and formation_energy < -0.4:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_bone_scaffold(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if {"Ca", "P", "O"}.issubset(elems):
+        score += 0.5
+    if elems & {"Mg", "Sr", "Zn", "Si", "F"}:
+        score += 0.2
+    if not elems & {"Cd", "Hg", "Pb", "As", "Tl"}:
+        score += 0.15
+    if not np.isnan(formation_energy) and formation_energy < -1.0:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_antibacterial_coating(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Ag", "Cu", "Zn", "Ti", "Ga"}:
+        score += 0.45
+    if elems & {"O", "N", "S"}:
+        score += 0.2
+    if not np.isnan(band_gap) and _in_range(band_gap, 0.5, 3.5):
+        score += 0.15
+    if not np.isnan(formation_energy) and formation_energy < -0.4:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_co2_capture_sorbent(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Mg", "Ca", "K", "Na", "Li", "Ba", "Sr"}:
+        score += 0.4
+    if elems & {"O", "N", "C"}:
+        score += 0.25
+    if not np.isnan(formation_energy) and formation_energy < -0.5:
+        score += 0.15
+    if not np.isnan(band_gap) and band_gap >= 1.0:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_desalination_membrane(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"C", "O", "N", "S"}:
+        score += 0.25
+    if elems & {"Si", "Al", "Ti", "Zr", "B"}:
+        score += 0.25
+    if not np.isnan(band_gap) and band_gap >= 2.0:
+        score += 0.2
+    if not np.isnan(formation_energy) and formation_energy < -0.5:
+        score += 0.15
+    return _clamp(score)
+
+
+def score_photocatalytic_pollutant_degradation(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Ti", "Zn", "Fe", "W", "Mo", "Bi", "Ce", "Cu"}:
+        score += 0.4
+    if elems & {"O", "N", "S"}:
+        score += 0.2
+    if not np.isnan(band_gap) and _in_range(band_gap, 1.7, 3.4):
+        score += 0.2
+    if not np.isnan(formation_energy) and formation_energy < -0.5:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_nuclear_fuel_cladding(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Zr", "Nb", "Sn", "Cr", "Fe", "Mo", "Si"}:
+        score += 0.45
+    if not elems & {"Cd", "B", "Gd"}:
+        score += 0.2
+    if not np.isnan(formation_energy) and formation_energy < -0.4:
+        score += 0.15
+    if not np.isnan(band_gap) and band_gap >= 0.0:
+        score += 0.05
+    return _clamp(score)
+
+
+def score_tritium_breeder(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if "Li" in elems:
+        score += 0.45
+    if elems & {"O", "Si", "Al", "Ti", "Zr"}:
+        score += 0.25
+    if not np.isnan(formation_energy) and formation_energy < -1.0:
+        score += 0.15
+    if not np.isnan(band_gap) and band_gap >= 2.0:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_radiation_shielding(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Pb", "W", "Bi", "Ba", "Ta", "Hf"}:
+        score += 0.45
+    if elems & {"O", "S", "F", "Cl", "Br"}:
+        score += 0.2
+    mean_z = _mean_atomic_number(elems)
+    if not np.isnan(mean_z) and mean_z >= 25:
+        score += 0.2
+    if not np.isnan(formation_energy) and formation_energy < -0.5:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_nuclear_waste_immobilisation(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Zr", "Ti", "Al", "Si", "P", "Ca"}:
+        score += 0.35
+    if elems & {"O", "F"}:
+        score += 0.25
+    if elems & {"La", "Ce", "Nd", "Gd", "Y"}:
+        score += 0.15
+    if not np.isnan(formation_energy) and formation_energy < -1.2:
+        score += 0.15
+    return _clamp(score)
+
+
+def score_battery_separator(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"O", "N", "F", "S"}:
+        score += 0.25
+    if elems & {"Al", "Si", "Ti", "Zr", "B", "P"}:
+        score += 0.25
+    if not np.isnan(band_gap) and band_gap >= 3.0:
+        score += 0.25
+    if not np.isnan(formation_energy) and formation_energy < -0.6:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_liquid_battery_electrolyte_component(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Li", "Na", "K", "Mg", "Al"}:
+        score += 0.25
+    if elems & {"F", "P", "S", "B", "Cl", "N", "O"}:
+        score += 0.35
+    if not np.isnan(formation_energy) and formation_energy < -0.2:
+        score += 0.1
+    if not np.isnan(band_gap) and band_gap >= 2.0:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_solar_thermal_absorber(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Ti", "Cr", "Fe", "Ni", "Co", "Mo", "W", "Ta"}:
+        score += 0.35
+    if elems & {"N", "C", "O", "B"}:
+        score += 0.2
+    if not np.isnan(band_gap) and _in_range(band_gap, 0.0, 1.6):
+        score += 0.25
+    if not np.isnan(formation_energy) and formation_energy < -0.6:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_anti_reflection_coating(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Si", "O", "Mg", "Al", "Ti", "Zr", "Ta", "F"}:
+        score += 0.4
+    if not np.isnan(band_gap) and band_gap >= 3.0:
+        score += 0.3
+    if not np.isnan(formation_energy) and formation_energy < -0.8:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_selective_hydrogenation_catalyst(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Pd", "Pt", "Ni", "Cu", "Co", "Ru", "Rh"}:
+        score += 0.45
+    if elems & {"O", "N", "S", "P", "C"}:
+        score += 0.15
+    if not np.isnan(band_gap) and band_gap < 2.0:
+        score += 0.15
+    if not np.isnan(formation_energy) and formation_energy < -0.2:
+        score += 0.1
+    if elems & {"Pt", "Rh", "Pd"}:
+        score *= 0.85
+    return _clamp(score)
+
+
+def score_fischer_tropsch_catalyst(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Fe", "Co", "Ru", "Ni"}:
+        score += 0.5
+    if elems & {"C", "O", "H"}:
+        score += 0.1
+    if elems & {"K", "Mn", "Cu", "Al", "Si"}:
+        score += 0.15
+    if not np.isnan(band_gap) and band_gap < 2.0:
+        score += 0.15
+    return _clamp(score)
+
+
+def score_dehydrogenation_lohc_catalyst(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Pt", "Pd", "Ni", "Cu", "Cr", "Fe", "Mo", "V"}:
+        score += 0.45
+    if elems & {"O", "N", "C", "S"}:
+        score += 0.15
+    if not np.isnan(band_gap) and band_gap < 2.0:
+        score += 0.15
+    if not np.isnan(formation_energy) and formation_energy < -0.2:
+        score += 0.1
+    if elems & {"Pt", "Pd"}:
+        score *= 0.85
+    return _clamp(score)
+
+
+def score_memristor_neuromorphic(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Hf", "Ta", "Ti", "Nb", "Ni", "Cu", "Mn", "W", "Mo"}:
+        score += 0.45
+    if "O" in elems:
+        score += 0.2
+    if not np.isnan(band_gap) and _in_range(band_gap, 0.1, 3.0):
+        score += 0.2
+    if not np.isnan(formation_energy) and formation_energy < -0.4:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_material_2d(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    amounts = _amounts(composition)
+    score = 0.0
+    if elems & {"C", "B", "N", "Mo", "W", "S", "Se", "Te", "Bi", "Sb"}:
+        score += 0.4
+    if len(elems) <= 4:
+        score += 0.2
+    if not np.isnan(band_gap) and _in_range(band_gap, 0.0, 2.5):
+        score += 0.2
+    if not np.isnan(formation_energy) and formation_energy < -0.2:
+        score += 0.1
+    if amounts.get("O", 0.0) > 0 and len(elems) > 4:
+        score *= 0.8
+    return _clamp(score)
+
+
+def score_optical_fibre_waveguide(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Si", "O", "B", "P", "Ge", "Al", "F"}:
+        score += 0.45
+    if not np.isnan(band_gap) and band_gap >= 3.0:
+        score += 0.25
+    if not np.isnan(formation_energy) and formation_energy < -0.8:
+        score += 0.1
+    if not elems & {"Fe", "Co", "Ni", "Cr"}:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_lightweight_structural(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Al", "Mg", "Ti", "Li", "Be", "C", "Si"}:
+        score += 0.4
+    mean_z = _mean_atomic_number(elems)
+    if not np.isnan(mean_z) and mean_z <= 20:
+        score += 0.2
+    if elems & {"B", "N", "C"}:
+        score += 0.15
+    if not np.isnan(formation_energy) and formation_energy < -0.4:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_shape_memory_alloy(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if {"Ni", "Ti"}.issubset(elems):
+        score += 0.45
+    if elems & {"Cu", "Al", "Mn", "Fe", "Hf", "Zr"}:
+        score += 0.2
+    if not np.isnan(band_gap) and band_gap < 1.0:
+        score += 0.15
+    if not np.isnan(formation_energy) and formation_energy < -0.2:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_metallic_glass(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if len(elems) >= 3:
+        score += 0.25
+    if elems & {"Zr", "Cu", "Ni", "Ti", "Pd", "Fe", "Co", "Al", "Mg"}:
+        score += 0.3
+    if elems & {"B", "Si", "P", "C"}:
+        score += 0.2
+    if not np.isnan(band_gap) and band_gap < 0.5:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_superalloy(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Ni", "Co", "Fe"}:
+        score += 0.35
+    if elems & {"Cr", "Al", "Ti", "Mo", "W", "Ta", "Nb", "Re"}:
+        score += 0.3
+    if not np.isnan(formation_energy) and formation_energy < -0.4:
+        score += 0.15
+    if elems & {"C", "B"}:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_hydrogen_embrittlement_resistant_steel(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if "Fe" in elems:
+        score += 0.35
+    if elems & {"Cr", "Ni", "Mo", "Mn", "Al", "Si", "V", "Ti", "Nb"}:
+        score += 0.3
+    if "H" not in elems:
+        score += 0.1
+    if not np.isnan(formation_energy) and formation_energy < -0.2:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_photocatalytic_co2_reduction(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Cu", "Ag", "Zn", "In", "Bi", "Fe", "Co", "Ni", "Ti"}:
+        score += 0.35
+    if elems & {"O", "N", "S", "C"}:
+        score += 0.2
+    if not np.isnan(band_gap) and _in_range(band_gap, 1.5, 3.2):
+        score += 0.25
+    if not np.isnan(formation_energy) and formation_energy < -0.4:
+        score += 0.1
+    if "Cu" in elems:
+        score += 0.1
+    return _clamp(score)
+
+
+def score_voc_decomposition_catalyst(composition, structure, band_gap, formation_energy, e_hull, features):
+    elems = _elements(composition)
+    score = 0.0
+    if elems & {"Ti", "Mn", "Co", "Cu", "Fe", "Ce", "V", "W", "Mo"}:
+        score += 0.4
+    if "O" in elems:
+        score += 0.25
+    if not np.isnan(band_gap) and _in_range(band_gap, 1.2, 3.2):
+        score += 0.15
+    if not np.isnan(formation_energy) and formation_energy < -0.4:
+        score += 0.1
+    return _clamp(score)
+
+
 SCORING_FUNCTIONS = {
     "battery_cathode_liion": score_battery_cathode_liion,
     "battery_anode": score_battery_anode,
     "battery_cathode_naion": score_battery_cathode_naion,
     "solid_electrolyte": score_solid_electrolyte,
+    "supercapacitor_electrode": score_supercapacitor_electrode,
+    "redox_flow_battery_electrolyte": score_redox_flow_battery_electrolyte,
     "hydrogen_storage": score_hydrogen_storage,
+    "sodium_sulfur_battery": score_sodium_sulfur_battery,
     "solar_singlejunction": score_solar_absorber_singlejunction,
     "solar_tandem": score_solar_absorber_tandem,
     "thermoelectric": score_thermoelectric,
+    "photovoltaic_perovskite_stabiliser": score_photovoltaic_perovskite_stabiliser,
+    "luminescent_solar_concentrator": score_luminescent_solar_concentrator,
     "oer_electrocatalyst": score_oer_electrocatalyst,
     "her_electrocatalyst": score_her_electrocatalyst,
     "co2_reduction": score_co2_reduction,
     "photocatalyst_h2o": score_photocatalyst_water_splitting,
+    "nitrogen_reduction_catalyst": score_nitrogen_reduction_catalyst,
+    "methane_activation_catalyst": score_methane_activation_catalyst,
+    "nox_reduction_catalyst": score_nox_reduction_catalyst,
     "semiconductor": score_semiconductor_general,
     "led": score_led,
     "photodetector": score_photodetector,
     "transparent_conductor": score_transparent_conductor,
     "ferroelectric": score_ferroelectric,
     "piezoelectric": score_piezoelectric,
+    "phase_change_memory": score_phase_change_memory,
+    "highk_dielectric": score_highk_dielectric,
+    "nonlinear_optical": score_nonlinear_optical,
     "topological_insulator": score_topological_insulator,
     "permanent_magnet": score_permanent_magnet,
     "soft_magnet": score_soft_magnet,
     "magnetic_semiconductor": score_magnetic_semiconductor,
+    "spintronic_mtj": score_spintronic_mtj,
     "thermal_barrier": score_tbc,
     "thermal_interface": score_thermal_interface,
     "hard_coating": score_hard_coating,
     "corrosion_resistant": score_corrosion_resistant,
     "refractory": score_refractory,
+    "qubit_host": score_qubit_host,
+    "topological_qubit_majorana": score_topological_qubit_majorana,
     "superconductor": score_superconductor,
     "radiation_detector": score_radiation_detector,
-    "sofc_electrolyte": score_sofc_electrolyte,
     "multiferroic": score_multiferroic,
+    "biodegradable_implant": score_biodegradable_implant,
+    "bone_scaffold": score_bone_scaffold,
+    "antibacterial_coating": score_antibacterial_coating,
+    "co2_capture_sorbent": score_co2_capture_sorbent,
+    "desalination_membrane": score_desalination_membrane,
+    "photocatalytic_pollutant_degradation": score_photocatalytic_pollutant_degradation,
+    "nuclear_fuel_cladding": score_nuclear_fuel_cladding,
+    "tritium_breeder": score_tritium_breeder,
+    "radiation_shielding": score_radiation_shielding,
+    "nuclear_waste_immobilisation": score_nuclear_waste_immobilisation,
+    "battery_separator": score_battery_separator,
+    "liquid_battery_electrolyte_component": score_liquid_battery_electrolyte_component,
+    "solar_thermal_absorber": score_solar_thermal_absorber,
+    "anti_reflection_coating": score_anti_reflection_coating,
+    "selective_hydrogenation_catalyst": score_selective_hydrogenation_catalyst,
+    "fischer_tropsch_catalyst": score_fischer_tropsch_catalyst,
+    "dehydrogenation_lohc_catalyst": score_dehydrogenation_lohc_catalyst,
+    "memristor_neuromorphic": score_memristor_neuromorphic,
+    "material_2d": score_material_2d,
+    "optical_fibre_waveguide": score_optical_fibre_waveguide,
+    "lightweight_structural": score_lightweight_structural,
+    "shape_memory_alloy": score_shape_memory_alloy,
+    "metallic_glass": score_metallic_glass,
+    "superalloy": score_superalloy,
+    "hydrogen_embrittlement_resistant_steel": score_hydrogen_embrittlement_resistant_steel,
+    "photocatalytic_co2_reduction": score_photocatalytic_co2_reduction,
+    "voc_decomposition_catalyst": score_voc_decomposition_catalyst,
 }
 
 

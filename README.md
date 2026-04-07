@@ -1,13 +1,29 @@
 # MatIntel (Windows-first)
 
-End-to-end materials screening MVP with:
-- Data ingestion and fallback demo dataset
-- Feature engineering from composition formulas
-- Application scoring across five domains
-- Viability scoring (cost, abundance, supply risk)
-- Streamlit UI with interactive filtering and AI summaries
+End-to-end materials screening platform with provenance-aware ranking, viability constraints, and CLscore synthesizability inference.
 
-## Quick Start (Windows PowerShell)
+## What is new
+
+- Scoring system expanded from 31 to 71 active categories in code.
+- Category registry now reflects the new full scoring spec in `MATINTEL_README_FULL.md`.
+- Top-10 exports now produce 710 rows each (71 categories x 10 candidates).
+- Provenance-aware ranking includes both Experimental and Synthesized records.
+- Viability and CLscore multiplier consistency hardened in app loading and detail breakdown.
+
+## Current capability summary
+
+- Multi-source ingestion: base dataset plus synthesized references.
+- 71 application scorers across energy, catalysis, electronics, magnetics, structural, quantum, biomedical, environmental, and advanced domains.
+- Viability scoring from:
+	- cost_score
+	- abundance_score
+	- supply_risk
+	- element-level filters (radioactive and rare-earth penalties)
+	- clscore_multiplier
+- CLscore integration via KAIST Synthesizability-PU-CGCNN pipeline.
+- Streamlit dashboard for filtering, provenance slicing, and top-candidate inspection.
+
+## Quick start (PowerShell)
 
 1. Setup environment and dependencies:
 
@@ -15,122 +31,96 @@ End-to-end materials screening MVP with:
 ./scripts/setup_windows.ps1
 ```
 
-2. (Optional but recommended) Pull the official GNoME CSV directly:
+2. Optional: fetch GNoME CSV:
 
 ```powershell
 ./scripts/download_gnome_csv.ps1
 ```
 
-3. Run the full backend pipeline:
+3. Run pipeline:
 
 ```powershell
 ./scripts/run_pipeline.ps1
 ```
 
-4. Launch UI:
+4. Launch website:
 
 ```powershell
 ./scripts/run_app.ps1
 ```
 
-## CLscore (KAIST Synthesizability-PU-CGCNN)
+## CLscore setup and usage
 
-### Setup
+Setup:
 
 ```powershell
 ./scripts/setup_clscore.ps1
 ```
 
-This script will:
-- clone `kaist-amsg/Synthesizability-PU-CGCNN` into `external/`
-- install `torch` and `scikit-learn` into your existing `.venv`
-- verify pretrained checkpoints exist and can be loaded on CPU
-
-### Run on top candidates
+Run CLscore on ranked candidates:
 
 ```powershell
 .\.venv\Scripts\python.exe run_clscore.py --app battery --top-n 1000 --cif-dir data/cifs
 ```
 
-Notes:
-- `run_clscore.py` ranks by `score_{app} * viability`, scores top-N, and merges `clscore` back into `data/processed/scored_dataset.csv`.
-- Resume-safe batch output is written to `data/processed/clscore_results.csv`.
-- Failed structures are logged in `data/processed/failed_clscore.csv`.
+Batch/all-material CLscore flow is supported through `run_clscore_all.py` and cache hydration in app loading.
 
-### Known compatibility notes
-
-- KAIST code is from an older stack; this project runs it with modern `Python 3.13 + torch 2.x` on CPU.
-- Legacy checkpoint loading may emit deprecation warnings from `torch`/`numpy`; these are non-fatal in this setup.
-- Inference is CPU-only and slow for very large datasets; score top-N candidates per application first.
-
-### GNoME-specific caveats
-
-- Missing CIF files for some IDs will return `clscore = -1` (unknown) and be logged.
-- Very large unit cells can make graph generation and inference slow.
-- Unusual/disordered structures may fail parsing or neighbor graph construction.
-- Elements with atomic number beyond common embedding range are clipped to a fallback feature index.
-
-## Data behavior
-
-- If `data/raw/stable_materials_summary.csv` exists, the pipeline uses it.
-- If missing, the pipeline auto-generates a realistic demo dataset so everything still runs.
-- To fetch the official dataset file directly, run `./scripts/download_gnome_csv.ps1`.
-
-Expected outputs:
-- `data/processed/working_dataset.csv`
-- `data/processed/featured_dataset.csv`
-- `data/processed/scored_dataset.csv`
-- `logs/pipeline.log`
-
-## Build Experimental Reference Dataset
-
-To fetch experimentally sourced compounds (MP + optional matminer/JARVIS enrichment) and align to your
-current `scored_dataset.csv` schema for direct concatenation:
+## Experimental reference build
 
 ```powershell
 setx MATINTEL_MP_API_KEY "<your_mp_key>"
 .\.venv\Scripts\python.exe scripts/build_experimental_reference.py
 ```
 
-Output:
+This generates:
+
 - `data/processed/experimental_compounds.csv`
 
-## Optional real-data expansion
+## Rescore everything after scoring updates
 
-Replace demo data with real data by placing your CSV at:
+Use this workflow when scoring logic changes:
 
-`data/raw/stable_materials_summary.csv`
+1. Recompute scores + viability on processed datasets.
+2. Regenerate top-10 files.
 
-Minimum required columns:
-- `MaterialId`
-- `Reduced Formula`
-- `Bandgap`
-- `Formation Energy Per Atom`
-- `Decomposition Energy Per Atom`
-- `NSites`
-- `Dimensionality Cheon`
-- `Crystal System`
-
-## Optional AI explanation support
-
-Set environment variable before running app:
+Top-10 regeneration command:
 
 ```powershell
-$env:ANTHROPIC_API_KEY = "your_key_here"
+.\.venv\Scripts\python.exe scripts/rebuild_top10.py
 ```
 
-If key is missing, app uses deterministic local fallback summaries.
+Current top-10 outputs:
+
+- `data/processed/top10_per_category.csv` (weighted by viability)
+- `data/processed/top10_per_category_raw_score.csv` (raw application score)
+
+## Key output files
+
+- `data/processed/working_dataset.csv`
+- `data/processed/featured_dataset.csv`
+- `data/processed/scored_dataset.csv`
+- `data/processed/experimental_compounds.csv`
+- `data/processed/top10_per_category.csv`
+- `data/processed/top10_per_category_raw_score.csv`
+- `logs/pipeline.log`
+
+## Documentation map
+
+- `README.md` (this file): operational quick guide.
+- `README_COMPREHENSIVE.md`: implementation-level reference and provenance analysis.
+- `MATINTEL_README_FULL.md`: full expanded category and scoring specification used for recent scorer implementation.
 
 ## Project layout
 
-- `app.py`: Streamlit interface
-- `src/matintel/pipeline.py`: pipeline entry point
-- `src/matintel/features.py`: composition feature engineering
-- `src/matintel/scoring.py`: domain scoring logic
-- `src/matintel/viability.py`: cost/abundance/supply scoring
-- `src/matintel/explanations.py`: AI explanation adapter
-- `scripts/*.ps1`: Windows setup and run scripts
+- `app.py`: Streamlit interface and data loading.
+- `src/matintel/scoring.py`: 71-category scoring logic.
+- `src/matintel/viability.py`: viability and penalty multipliers.
+- `src/matintel/pipeline.py`: data pipeline orchestration.
+- `scripts/rebuild_top10.py`: regenerate top-10 exports.
+- `scripts/run_app.ps1`: launch website.
 
 ## Notes
 
-This build is intentionally Windows-first (PowerShell scripts, `.venv\\Scripts\\python.exe`, path handling via `pathlib`).
+- Windows-first setup using PowerShell scripts and `.venv\Scripts\python.exe`.
+- Very large datasets can take significant time for full rescoring and CLscore inference.
+- For CLscore, missing/invalid CIFs can yield `clscore = -1` before cache backfill.

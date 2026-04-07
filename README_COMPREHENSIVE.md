@@ -25,6 +25,7 @@
 11. [Advanced Usage](#advanced-usage)
 12. [Technical Implementation Details](#technical-implementation-details)
 13. [Recent Updates (March 2026)](#recent-updates-march-2026)
+14. [Top-10 Provenance Findings (March 2026 Snapshot)](#top-10-provenance-findings-march-2026-snapshot)
 
 ---
 
@@ -1531,6 +1532,114 @@ The system is extensible, Windows-native, and production-ready for computational
 5. **Export and analyst workflow improvements**
 - Dashboard export bundle includes CSV, CIF ZIP, and PDF summary
 - Added top-10-per-category exports for both viability-adjusted and raw-score ranking
+
+---
+
+## Top-10 Provenance Findings (March 2026 Snapshot)
+
+This section summarizes a direct analysis of:
+- `data/processed/top10_per_category_raw_score.csv` (raw application ranking)
+- `data/processed/top10_per_category.csv` (viability-adjusted ranking)
+
+### Headline Metrics
+
+- **31 categories x 10 entries = 310 rows** in each export
+- **Experimental share (raw top-10)**: **29.03%**
+- **Experimental share (viability-adjusted top-10)**: **25.81%**
+- Viability weighting shifts the frontier slightly toward synthesized references overall
+
+### Where Experimental Excels vs Synthesized (Viability-Adjusted Top-10)
+
+Using mean `weighted_score` within each category's viability-adjusted top-10:
+
+- **Experimental advantage (7 categories)**:
+  - Ferroelectric
+  - Hard Coating / Wear Resistant
+  - Hydrogen Storage
+  - Refractory / UHTC
+  - Soft Magnet
+  - Solar Absorber - Single Junction
+  - Thermal Barrier Coating
+
+- **Synthesized advantage (15 categories)**:
+  - Battery Anode
+  - CO2 Reduction Catalyst
+  - Corrosion Resistant Coating
+  - HER Electrocatalyst (Green Hydrogen)
+  - LED / Light Emitter
+  - Multiferroic
+  - Photodetector
+  - Radiation Detector / Scintillator
+  - Semiconductor (General)
+  - Solar Absorber - Tandem Top Cell
+  - Solid Oxide Fuel Cell Electrolyte
+  - Thermal Interface Material
+  - Thermoelectric
+  - Topological Insulator
+  - Transparent Conductor
+
+- **Synthesized-only top-10 (9 categories, 0 experimental in weighted top-10)**:
+  - Battery Cathode (Li-ion)
+  - Battery Cathode (Na-ion)
+  - Magnetic Semiconductor / Spintronics
+  - OER Electrocatalyst (Water Splitting)
+  - Permanent Magnet
+  - Photocatalyst (Water Splitting)
+  - Piezoelectric
+  - Solid Electrolyte
+  - Superconductor
+
+### Largest Provenance Shifts After Viability Weighting
+
+- **Experimental share increase**:
+  - Hard Coating / Wear Resistant: **30% -> 90%**
+
+- **Experimental share decreases**:
+  - Superconductor: **50% -> 0%**
+  - Hydrogen Storage: **90% -> 50%**
+  - Solar Absorber - Single Junction: **100% -> 70%**
+  - Permanent Magnet: **20% -> 0%**
+  - Multiferroic: **70% -> 50%**
+
+### Experimental Presence by Category (Raw vs Viability-Adjusted Top-10)
+
+| Category | Experimental % (raw top-10) | Experimental % (weighted top-10) | Weighted advantage |
+|---|---:|---:|---|
+| Battery Anode | 40.0% | 40.0% | Synthesized |
+| Battery Cathode (Li-ion) | 0.0% | 0.0% | Synthesized-only |
+| Battery Cathode (Na-ion) | 0.0% | 0.0% | Synthesized-only |
+| CO2 Reduction Catalyst | 50.0% | 50.0% | Synthesized |
+| Corrosion Resistant Coating | 10.0% | 10.0% | Synthesized |
+| Ferroelectric | 10.0% | 10.0% | Experimental |
+| HER Electrocatalyst (Green Hydrogen) | 60.0% | 60.0% | Synthesized |
+| Hard Coating / Wear Resistant | 30.0% | 90.0% | Experimental |
+| Hydrogen Storage | 90.0% | 50.0% | Experimental |
+| LED / Light Emitter | 10.0% | 10.0% | Synthesized |
+| Magnetic Semiconductor / Spintronics | 0.0% | 0.0% | Synthesized-only |
+| Multiferroic | 70.0% | 50.0% | Synthesized |
+| OER Electrocatalyst (Water Splitting) | 0.0% | 0.0% | Synthesized-only |
+| Permanent Magnet | 20.0% | 0.0% | Synthesized-only |
+| Photocatalyst (Water Splitting) | 0.0% | 0.0% | Synthesized-only |
+| Photodetector | 20.0% | 20.0% | Synthesized |
+| Piezoelectric | 0.0% | 0.0% | Synthesized-only |
+| Radiation Detector / Scintillator | 60.0% | 60.0% | Synthesized |
+| Refractory / UHTC | 30.0% | 30.0% | Experimental |
+| Semiconductor (General) | 10.0% | 10.0% | Synthesized |
+| Soft Magnet | 10.0% | 10.0% | Experimental |
+| Solar Absorber - Single Junction | 100.0% | 70.0% | Experimental |
+| Solar Absorber - Tandem Top Cell | 20.0% | 20.0% | Synthesized |
+| Solid Electrolyte | 0.0% | 0.0% | Synthesized-only |
+| Solid Oxide Fuel Cell Electrolyte | 40.0% | 40.0% | Synthesized |
+| Superconductor | 50.0% | 0.0% | Synthesized-only |
+| Thermal Barrier Coating | 20.0% | 20.0% | Experimental |
+| Thermal Interface Material | 20.0% | 20.0% | Synthesized |
+| Thermoelectric | 50.0% | 50.0% | Synthesized |
+| Topological Insulator | 70.0% | 70.0% | Synthesized |
+| Transparent Conductor | 10.0% | 10.0% | Synthesized |
+
+### Analyst Takeaway
+
+Experimental candidates are still highly competitive in several categories, but viability weighting (cost, abundance, supply risk, and CLscore) generally favors synthesized references in more categories than not. The strongest experimental resilience appears in wear-resistant coatings and single-junction solar absorbers, while batteries (especially cathodes), solid electrolytes, and several catalytic categories remain synthesized-dominant under current viability constraints.
 
 ---
 

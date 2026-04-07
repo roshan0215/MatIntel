@@ -39,6 +39,26 @@ Solid Electrolyte,score_solid_electrolyte,mp-8678,NaAlPO4F,1.0,0.627,0.627,0.862
 Solid Electrolyte,score_solid_electrolyte,mp-23151,Na4BeAlSi4ClO12,1.0,0.624,0.624,0.8757754564285278,7.651,MP_synthesized,False
 Solid Electrolyte,score_solid_electrolyte,mp-707443,Na7AlH2C4(O3F)4,1.0,0.614,0.614,0.8470103740692139,4.805499999999999,MP_synthesized,False
 Solid Electrolyte,score_solid_electrolyte,mp-643655,LiAl2H6ClO6,1.0,0.612,0.612,0.8463441729545593,5.1532,MP_synthesized,False
+Supercapacitor Electrode,score_supercapacitor_electrode,mp-18905,FeO,0.9,0.783,0.7047,0.9425278306007384,0.0,MP_synthesized,False
+Supercapacitor Electrode,score_supercapacitor_electrode,mp-1188678,Fe4O5,0.9,0.776,0.6984,0.9525421261787416,0.0,MP_synthesized,False
+Supercapacitor Electrode,score_supercapacitor_electrode,8faa33925b,Fe4Se3S,0.9,0.775,0.6975,0.967870831489563,0.0077,Experimental,True
+Supercapacitor Electrode,score_supercapacitor_electrode,mp-18731,Fe3O4,0.9,0.773,0.6957,0.9521861672401428,0.7548,MP_synthesized,False
+Supercapacitor Electrode,score_supercapacitor_electrode,mp-19306,Fe3O4,0.9,0.773,0.6957,0.7054262757301331,0.0,MP_synthesized,False
+Supercapacitor Electrode,score_supercapacitor_electrode,mp-31770,Fe3O4,0.9,0.773,0.6957,0.563198447227478,0.0,MP_synthesized,False
+Supercapacitor Electrode,score_supercapacitor_electrode,mp-505595,Fe3O4,0.9,0.773,0.6957,0.6656357645988464,0.4689,MP_synthesized,False
+Supercapacitor Electrode,score_supercapacitor_electrode,mp-510252,Fe3O4,0.9,0.773,0.6957,0.8186781406402588,0.2435,MP_synthesized,False
+Supercapacitor Electrode,score_supercapacitor_electrode,mp-611817,Fe3O4,0.9,0.773,0.6957,0.9930312633514404,0.0,MP_synthesized,False
+Supercapacitor Electrode,score_supercapacitor_electrode,mp-22635,Fe7SiO10,0.9,0.772,0.6948000000000001,0.9165456295013428,0.0,MP_synthesized,False
+Redox Flow Battery Electrolyte,score_redox_flow_battery_electrolyte,cf721d7aba,Fe5Ni(BO5)2,0.9,0.703,0.6326999999999999,0.9412348866462708,1.2379,Experimental,True
+Redox Flow Battery Electrolyte,score_redox_flow_battery_electrolyte,3ff19dec47,Fe3CuNi8(BO5)4,0.9,0.696,0.6264,0.8394795656204224,0.3109,Experimental,True
+Redox Flow Battery Electrolyte,score_redox_flow_battery_electrolyte,37d36d4049,Fe4CuNi5(SeO3)12,0.9,0.69,0.621,0.8863058090209961,0.8411,Experimental,True
+Redox Flow Battery Electrolyte,score_redox_flow_battery_electrolyte,mp-21522,FeNi2BO5,0.9,0.687,0.6183000000000001,0.8487873673439026,1.6665,MP_synthesized,False
+Redox Flow Battery Electrolyte,score_redox_flow_battery_electrolyte,0422f63b5b,Fe3Ni(Se2O5)4,0.9,0.679,0.6111000000000001,0.9553262591362,2.5918,Experimental,True
+Redox Flow Battery Electrolyte,score_redox_flow_battery_electrolyte,30342393d7,FeNi(Se2O5)2,0.9,0.677,0.6093000000000001,0.9387152194976808,2.5057,Experimental,True
+Redox Flow Battery Electrolyte,score_redox_flow_battery_electrolyte,mp-753222,Fe2CoO4,0.9,0.676,0.6084,0.899050235748291,1.5511,MP_synthesized,False
+Redox Flow Battery Electrolyte,score_redox_flow_battery_electrolyte,6e5fcee786,FeNi3(Se2O5)4,0.9,0.675,0.6075,0.9373407363891602,2.6378,Experimental,True
+Redox Flow Battery Electrolyte,score_redox_flow_battery_electrolyte,cb68223d8c,Fe2Co(SeO3)4,0.9,0.675,0.6075,0.8961209654808044,2.1336,Experimental,True
+Redox Flow Battery Electrolyte,score_redox_flow_battery_electrolyte,d9c4e126ae,FeNiSb4(Cl2O3)2,0.9,0.674,0.6066,0.8742701411247253,2.6992,Experimental,True
 Hydrogen Storage,score_hydrogen_storage,mp-505576,Zr6Al7Cu16H9,0.85,0.647,0.54995,0.8373432159423828,0.0,MP_synthesized,False
 Hydrogen Storage,score_hydrogen_storage,0a00ad876f,AlV10Si5H2,0.85,0.638,0.5423,0.7502280473709106,0.0024,Experimental,True
 Hydrogen Storage,score_hydrogen_storage,19c9c38d4d,Sr3CaAl2(VH10)2,0.85,0.594,0.5049,0.789827287197113,0.2565,Experimental,True
@@ -49,26 +69,36 @@ Hydrogen Storage,score_hydrogen_storage,a18723edf4,Sr4AlV3H20,0.85,0.567,0.48194
 Hydrogen Storage,score_hydrogen_storage,279aa0e01d,Ca4MgAl2VH20,0.85,0.561,0.47685000000000005,0.7507791519165039,0.7548,Experimental,True
 Hydrogen Storage,score_hydrogen_storage,fc93a2f7b4,Sr4NbAl2VH20,0.85,0.546,0.4641,0.7975279688835144,0.2095,Experimental,True
 Hydrogen Storage,score_hydrogen_storage,70db12c925,Ba4Ta2AlFeH20,0.85,0.533,0.45305,0.640590488910675,0.0031,Experimental,True
-Solar Absorber - Single Junction,score_solar_singlejunction,3547a16b88,Ba2Cu2Bi2SeS5,1.0,0.584,0.584,0.9304623007774352,1.4247,Experimental,True
-Solar Absorber - Single Junction,score_solar_singlejunction,fcb1596fb2,Ba2ThCu2Se3S2,0.911,0.0,0.0,0.9338343739509584,1.4182,Experimental,True
-Solar Absorber - Single Junction,score_solar_singlejunction,307abbe9ca,Cs2Ti2Cu6SeS7,0.877,0.636,0.557772,0.7865100502967834,1.4851,Experimental,True
-Solar Absorber - Single Junction,score_solar_singlejunction,80d0722611,Cs4V2Cu2SeS7,0.874,0.592,0.517408,0.934504210948944,1.1879,Experimental,True
-Solar Absorber - Single Junction,score_solar_singlejunction,6a84a4e513,Cs2V2Cu4SeS7,0.825,0.618,0.5098499999999999,0.9648598432540894,1.0905,Experimental,True
-Solar Absorber - Single Junction,score_solar_singlejunction,7b64626c70,CsVCu2SeS3,0.817,0.624,0.5098079999999999,0.9591861963272096,1.0735,Experimental,True
-Solar Absorber - Single Junction,score_solar_singlejunction,b5e20a49b4,Cs2VCuSe3S,0.815,0.618,0.50367,0.8879311680793762,1.0703,Experimental,True
-Solar Absorber - Single Junction,score_solar_singlejunction,827801ca50,K4InGa3(GeSe4)4,0.755,0.255,0.192525,0.9647009372711182,1.5299,Experimental,True
-Solar Absorber - Single Junction,score_solar_singlejunction,d97ebee04d,KInGa2Se5,0.747,0.397,0.296559,0.9787135720252992,1.335,Experimental,True
-Solar Absorber - Single Junction,score_solar_singlejunction,449b7a6806,InGaTeSe2,0.746,0.309,0.230514,0.7962929010391235,1.3321,Experimental,True
-Solar Absorber - Tandem Top Cell,score_solar_tandem,mp-557101,Sn(S4I)4,0.812,0.58,0.47096,0.9496437907218932,1.7979,MP_synthesized,False
-Solar Absorber - Tandem Top Cell,score_solar_tandem,ae1ce494f9,Rb3GeIrCl8,0.801,0.275,0.22027500000000003,0.8944293856620789,1.8112,Experimental,True
-Solar Absorber - Tandem Top Cell,score_solar_tandem,mp-1201802,Ba4NaGe3S10Cl,0.776,0.295,0.22891999999999998,0.868980884552002,1.8421,MP_synthesized,False
-Solar Absorber - Tandem Top Cell,score_solar_tandem,3b558a494d,K3GeIrCl8,0.767,0.275,0.21092500000000003,0.9203993082046508,1.8538,Experimental,True
-Solar Absorber - Tandem Top Cell,score_solar_tandem,mp-23386,Sn2SI2,0.761,0.612,0.465732,0.9870796799659728,1.6389,MP_synthesized,False
-Solar Absorber - Tandem Top Cell,score_solar_tandem,mp-570137,SnH16C4(Br3N)2,0.737,0.613,0.451781,0.8372360467910767,1.8910999999999991,MP_synthesized,False
-Solar Absorber - Tandem Top Cell,score_solar_tandem,mp-566296,SnS8(N2Cl)4,0.731,0.604,0.44152399999999997,0.9303536415100098,1.6015,MP_synthesized,False
-Solar Absorber - Tandem Top Cell,score_solar_tandem,mp-28377,CsGeI3,0.73,0.024,0.01752,0.0148524921387434,1.6,MP_synthesized,False
-Solar Absorber - Tandem Top Cell,score_solar_tandem,mp-707441,SnH12Pt(N2Cl3)2,0.722,0.335,0.24187,0.9788973331451416,1.91,MP_synthesized,False
-Solar Absorber - Tandem Top Cell,score_solar_tandem,mp-705194,Mn2SnC10BrO10,0.72,0.609,0.43848,0.9380049109458924,1.9127,MP_synthesized,False
+Sodium-Sulfur Battery Electrolyte/Electrode,score_sodium_sulfur_battery,mp-1195293,Na2Sb5C2S2N2(OF3)3,0.95,0.709,0.67355,0.8563427925109863,3.0602,MP_synthesized,False
+Sodium-Sulfur Battery Electrolyte/Electrode,score_sodium_sulfur_battery,mp-510606,NaFe3H6(SO7)2,0.95,0.702,0.6668999999999999,0.8124523758888245,1.8201,MP_synthesized,False
+Sodium-Sulfur Battery Electrolyte/Electrode,score_sodium_sulfur_battery,mp-604429,NaFe3H6(SO7)2,0.95,0.702,0.6668999999999999,0.7791611552238464,1.882,MP_synthesized,False
+Sodium-Sulfur Battery Electrolyte/Electrode,score_sodium_sulfur_battery,mp-695964,NaFe2H3(SO4)2,0.95,0.701,0.6659499999999999,0.908055067062378,1.5629,MP_synthesized,False
+Sodium-Sulfur Battery Electrolyte/Electrode,score_sodium_sulfur_battery,mp-1193859,NaFeH4SO6F,0.95,0.683,0.64885,0.8577964901924133,2.131199999999999,MP_synthesized,False
+Sodium-Sulfur Battery Electrolyte/Electrode,score_sodium_sulfur_battery,mp-1307582,NaFeH4SO6F,0.95,0.683,0.64885,0.8616102337837219,3.639699999999999,MP_synthesized,False
+Sodium-Sulfur Battery Electrolyte/Electrode,score_sodium_sulfur_battery,mp-849796,NaZn4H18SClO16,0.95,0.679,0.64505,0.914715588092804,3.2835,MP_synthesized,False
+Sodium-Sulfur Battery Electrolyte/Electrode,score_sodium_sulfur_battery,mp-1190551,Na2FeSO4F3,0.95,0.678,0.6441,0.8157867789268494,2.052699999999999,MP_synthesized,False
+Sodium-Sulfur Battery Electrolyte/Electrode,score_sodium_sulfur_battery,mp-11147,Na5CuSO2,0.95,0.678,0.6441,0.9962045550346376,2.248,MP_synthesized,False
+Sodium-Sulfur Battery Electrolyte/Electrode,score_sodium_sulfur_battery,mp-18104,Na2Si2S5,0.95,0.676,0.6422,0.7248924970626831,3.599,MP_synthesized,False
+Solar Absorber (Single Junction),score_solar_singlejunction,3547a16b88,Ba2Cu2Bi2SeS5,1.0,0.584,0.584,0.9304623007774352,1.4247,Experimental,True
+Solar Absorber (Single Junction),score_solar_singlejunction,fcb1596fb2,Ba2ThCu2Se3S2,0.911,0.0,0.0,0.9338343739509584,1.4182,Experimental,True
+Solar Absorber (Single Junction),score_solar_singlejunction,307abbe9ca,Cs2Ti2Cu6SeS7,0.877,0.636,0.557772,0.7865100502967834,1.4851,Experimental,True
+Solar Absorber (Single Junction),score_solar_singlejunction,80d0722611,Cs4V2Cu2SeS7,0.874,0.592,0.517408,0.934504210948944,1.1879,Experimental,True
+Solar Absorber (Single Junction),score_solar_singlejunction,6a84a4e513,Cs2V2Cu4SeS7,0.825,0.618,0.5098499999999999,0.9648598432540894,1.0905,Experimental,True
+Solar Absorber (Single Junction),score_solar_singlejunction,7b64626c70,CsVCu2SeS3,0.817,0.624,0.5098079999999999,0.9591861963272096,1.0735,Experimental,True
+Solar Absorber (Single Junction),score_solar_singlejunction,b5e20a49b4,Cs2VCuSe3S,0.815,0.618,0.50367,0.8879311680793762,1.0703,Experimental,True
+Solar Absorber (Single Junction),score_solar_singlejunction,827801ca50,K4InGa3(GeSe4)4,0.755,0.255,0.192525,0.9647009372711182,1.5299,Experimental,True
+Solar Absorber (Single Junction),score_solar_singlejunction,d97ebee04d,KInGa2Se5,0.747,0.397,0.296559,0.9787135720252992,1.335,Experimental,True
+Solar Absorber (Single Junction),score_solar_singlejunction,449b7a6806,InGaTeSe2,0.746,0.309,0.230514,0.7962929010391235,1.3321,Experimental,True
+Solar Absorber (Tandem Top Cell),score_solar_tandem,mp-557101,Sn(S4I)4,0.812,0.58,0.47096,0.9496437907218932,1.7979,MP_synthesized,False
+Solar Absorber (Tandem Top Cell),score_solar_tandem,ae1ce494f9,Rb3GeIrCl8,0.801,0.275,0.22027500000000003,0.8944293856620789,1.8112,Experimental,True
+Solar Absorber (Tandem Top Cell),score_solar_tandem,mp-1201802,Ba4NaGe3S10Cl,0.776,0.295,0.22891999999999998,0.868980884552002,1.8421,MP_synthesized,False
+Solar Absorber (Tandem Top Cell),score_solar_tandem,3b558a494d,K3GeIrCl8,0.767,0.275,0.21092500000000003,0.9203993082046508,1.8538,Experimental,True
+Solar Absorber (Tandem Top Cell),score_solar_tandem,mp-23386,Sn2SI2,0.761,0.612,0.465732,0.9870796799659728,1.6389,MP_synthesized,False
+Solar Absorber (Tandem Top Cell),score_solar_tandem,mp-570137,SnH16C4(Br3N)2,0.737,0.613,0.451781,0.8372360467910767,1.8910999999999991,MP_synthesized,False
+Solar Absorber (Tandem Top Cell),score_solar_tandem,mp-566296,SnS8(N2Cl)4,0.731,0.604,0.44152399999999997,0.9303536415100098,1.6015,MP_synthesized,False
+Solar Absorber (Tandem Top Cell),score_solar_tandem,mp-28377,CsGeI3,0.73,0.024,0.01752,0.0148524921387434,1.6,MP_synthesized,False
+Solar Absorber (Tandem Top Cell),score_solar_tandem,mp-707441,SnH12Pt(N2Cl3)2,0.722,0.335,0.24187,0.9788973331451416,1.91,MP_synthesized,False
+Solar Absorber (Tandem Top Cell),score_solar_tandem,mp-705194,Mn2SnC10BrO10,0.72,0.609,0.43848,0.9380049109458924,1.9127,MP_synthesized,False
 Thermoelectric,score_thermoelectric,mp-15896,Cu2SiSe3,0.9,0.766,0.6894,0.9208141565322876,0.238699999999999,MP_synthesized,False
 Thermoelectric,score_thermoelectric,mp-1103067,FePSe,0.9,0.753,0.6777,0.6708496809005737,0.1894,MP_synthesized,False
 Thermoelectric,score_thermoelectric,38489c2daf,K3(CuSe)4,0.9,0.745,0.6705,0.7495652437210083,0.1029,Experimental,True
@@ -79,6 +109,26 @@ Thermoelectric,score_thermoelectric,2982b634f3,K5Na(CuSe13)2,0.9,0.739,0.6651,0.
 Thermoelectric,score_thermoelectric,mp-1189879,CdCu2SiSe4,0.9,0.739,0.6651,0.5898056626319885,0.339999999999999,MP_synthesized,False
 Thermoelectric,score_thermoelectric,mp-558202,Fe2Cu3(SeO3)6,0.9,0.734,0.6606,0.9167346358299256,0.2582,MP_synthesized,False
 Thermoelectric,score_thermoelectric,mp-558486,Fe2Cu3(SeO3)6,0.9,0.734,0.6606,0.9054005146026612,0.209099999999999,MP_synthesized,False
+Photovoltaic Perovskite Stabiliser,score_photovoltaic_perovskite_stabiliser,cadbefcc39,CaFe4PbCl16,0.95,0.678,0.6441,0.9937217831611632,1.2813,Experimental,True
+Photovoltaic Perovskite Stabiliser,score_photovoltaic_perovskite_stabiliser,d9c1428bd3,SrFe4PbCl16,0.95,0.676,0.6422,0.997689962387085,1.2335,Experimental,True
+Photovoltaic Perovskite Stabiliser,score_photovoltaic_perovskite_stabiliser,9af46a1992,CaSb2Br2O3,0.95,0.668,0.6346,0.972337245941162,2.7542,Experimental,True
+Photovoltaic Perovskite Stabiliser,score_photovoltaic_perovskite_stabiliser,c16c11f21e,SrSb6(S2I)4,0.95,0.663,0.62985,0.9814583659172058,1.7587,Experimental,True
+Photovoltaic Perovskite Stabiliser,score_photovoltaic_perovskite_stabiliser,78a8908330,Ca2Sb3I3O5,0.95,0.653,0.62035,0.9368669986724854,2.2733,Experimental,True
+Photovoltaic Perovskite Stabiliser,score_photovoltaic_perovskite_stabiliser,48b107ffc5,NaPb4IO4,0.95,0.637,0.60515,0.8600559234619141,2.4124,Experimental,True
+Photovoltaic Perovskite Stabiliser,score_photovoltaic_perovskite_stabiliser,56cfab8d76,NaPb4ClO4,0.95,0.637,0.60515,0.8841681480407715,2.3823,Experimental,True
+Photovoltaic Perovskite Stabiliser,score_photovoltaic_perovskite_stabiliser,5eb18114f7,Rb2Pb(IO3)6,0.95,0.637,0.60515,0.9383421540260316,1.7845,Experimental,True
+Photovoltaic Perovskite Stabiliser,score_photovoltaic_perovskite_stabiliser,c7dbd794c6,NaPb4BrO4,0.95,0.637,0.60515,0.910529375076294,2.4079,Experimental,True
+Photovoltaic Perovskite Stabiliser,score_photovoltaic_perovskite_stabiliser,e60983567b,SrPb5(BrO)4,0.95,0.637,0.60515,0.9479252696037292,2.5132,Experimental,True
+Luminescent Solar Concentrator (LSC) Material,score_luminescent_solar_concentrator,e73535d773,NaLaSiSe4,0.9,0.565,0.5085,0.9891457557678224,2.3099,Experimental,True
+Luminescent Solar Concentrator (LSC) Material,score_luminescent_solar_concentrator,mp-571057,KY(PSe3)2,0.9,0.565,0.5085,0.9839434623718262,1.938699999999999,MP_synthesized,False
+Luminescent Solar Concentrator (LSC) Material,score_luminescent_solar_concentrator,58d4abd498,RbYSiSe4,0.9,0.564,0.5075999999999999,0.904030978679657,2.2697,Experimental,True
+Luminescent Solar Concentrator (LSC) Material,score_luminescent_solar_concentrator,mp-861606,KLaSiSe4,0.9,0.564,0.5075999999999999,0.98260098695755,2.208099999999999,MP_synthesized,False
+Luminescent Solar Concentrator (LSC) Material,score_luminescent_solar_concentrator,mp-571662,KLa(PSe3)2,0.9,0.561,0.5049,0.986561954021454,1.974699999999999,MP_synthesized,False
+Luminescent Solar Concentrator (LSC) Material,score_luminescent_solar_concentrator,7ab684e401,La3Si2Se8Br,0.9,0.556,0.5004000000000001,0.8969014286994934,1.9872,Experimental,True
+Luminescent Solar Concentrator (LSC) Material,score_luminescent_solar_concentrator,451302cee3,La3Si2Se8I,0.9,0.554,0.49860000000000004,0.9098821878433228,1.909,Experimental,True
+Luminescent Solar Concentrator (LSC) Material,score_luminescent_solar_concentrator,mp-552488,LaCuSeO,0.9,0.552,0.4968000000000001,0.7158215641975403,2.83,MP_synthesized,False
+Luminescent Solar Concentrator (LSC) Material,score_luminescent_solar_concentrator,31cb70ec56,La2SiSe5,0.9,0.543,0.4887,0.97573322057724,1.8218,Experimental,True
+Luminescent Solar Concentrator (LSC) Material,score_luminescent_solar_concentrator,mp-999448,NaYSe2,0.9,0.539,0.48510000000000003,0.9950103759765624,2.494,MP_synthesized,False
 OER Electrocatalyst (Water Splitting),score_oer_electrocatalyst,mp-18905,FeO,1.0,0.783,0.783,0.9425278306007384,0.0,MP_synthesized,False
 OER Electrocatalyst (Water Splitting),score_oer_electrocatalyst,mp-1188678,Fe4O5,1.0,0.776,0.776,0.9525421261787416,0.0,MP_synthesized,False
 OER Electrocatalyst (Water Splitting),score_oer_electrocatalyst,mp-18731,Fe3O4,1.0,0.773,0.773,0.9521861672401428,0.7548,MP_synthesized,False
@@ -99,16 +149,16 @@ HER Electrocatalyst (Green Hydrogen),score_her_electrocatalyst,18045e7915,K(FeSe
 HER Electrocatalyst (Green Hydrogen),score_her_electrocatalyst,mp-15896,Cu2SiSe3,0.85,0.766,0.6511,0.9208141565322876,0.238699999999999,MP_synthesized,False
 HER Electrocatalyst (Green Hydrogen),score_her_electrocatalyst,1922a60086,Fe4SeS3,0.85,0.764,0.6494,0.9553924202919006,0.0196,Experimental,True
 HER Electrocatalyst (Green Hydrogen),score_her_electrocatalyst,1f4e33901f,RbFe6Se7,0.85,0.764,0.6494,0.9098531007766724,0.0033,Experimental,True
-CO2 Reduction Catalyst,score_co2_reduction,mp-504587,Fe9Cu9S16,0.9,0.753,0.6777,0.8014405369758606,0.0,MP_synthesized,False
-CO2 Reduction Catalyst,score_co2_reduction,8a4c443459,NaCu4(SeS)2,0.9,0.751,0.6759000000000001,0.5380176901817322,0.0103,Experimental,True
-CO2 Reduction Catalyst,score_co2_reduction,d9569927ed,Na3Cu4Se3S,0.9,0.748,0.6732,0.6743502020835876,0.0008,Experimental,True
-CO2 Reduction Catalyst,score_co2_reduction,mp-22295,Ca(Cu2P)2,0.9,0.748,0.6732,0.840376079082489,0.0,MP_synthesized,False
-CO2 Reduction Catalyst,score_co2_reduction,mp-3497,FeCuS2,0.9,0.748,0.6732,0.6969283819198608,0.43,MP_synthesized,False
-CO2 Reduction Catalyst,score_co2_reduction,mp-1078387,FeCu3S4,0.9,0.744,0.6696,0.5512157082557678,0.0,MP_synthesized,False
-CO2 Reduction Catalyst,score_co2_reduction,e2407163fe,Na3Cu4(SeS)2,0.9,0.742,0.6678000000000001,0.7073482275009155,0.0049,Experimental,True
-CO2 Reduction Catalyst,score_co2_reduction,d5df39e6c7,Ca2Fe2CuN3,0.9,0.741,0.6669,0.7185001969337463,0.0004,Experimental,True
-CO2 Reduction Catalyst,score_co2_reduction,mp-1188558,FeCu2SiS4,0.9,0.741,0.6669,0.7518506050109863,0.0213,MP_synthesized,False
-CO2 Reduction Catalyst,score_co2_reduction,04b8029dc7,KCu2SeS,0.9,0.74,0.666,0.5253714919090271,0.0031,Experimental,True
+CO2 Reduction Catalyst (CO2RR),score_co2_reduction,mp-504587,Fe9Cu9S16,0.9,0.753,0.6777,0.8014405369758606,0.0,MP_synthesized,False
+CO2 Reduction Catalyst (CO2RR),score_co2_reduction,8a4c443459,NaCu4(SeS)2,0.9,0.751,0.6759000000000001,0.5380176901817322,0.0103,Experimental,True
+CO2 Reduction Catalyst (CO2RR),score_co2_reduction,d9569927ed,Na3Cu4Se3S,0.9,0.748,0.6732,0.6743502020835876,0.0008,Experimental,True
+CO2 Reduction Catalyst (CO2RR),score_co2_reduction,mp-22295,Ca(Cu2P)2,0.9,0.748,0.6732,0.840376079082489,0.0,MP_synthesized,False
+CO2 Reduction Catalyst (CO2RR),score_co2_reduction,mp-3497,FeCuS2,0.9,0.748,0.6732,0.6969283819198608,0.43,MP_synthesized,False
+CO2 Reduction Catalyst (CO2RR),score_co2_reduction,mp-1078387,FeCu3S4,0.9,0.744,0.6696,0.5512157082557678,0.0,MP_synthesized,False
+CO2 Reduction Catalyst (CO2RR),score_co2_reduction,e2407163fe,Na3Cu4(SeS)2,0.9,0.742,0.6678000000000001,0.7073482275009155,0.0049,Experimental,True
+CO2 Reduction Catalyst (CO2RR),score_co2_reduction,d5df39e6c7,Ca2Fe2CuN3,0.9,0.741,0.6669,0.7185001969337463,0.0004,Experimental,True
+CO2 Reduction Catalyst (CO2RR),score_co2_reduction,mp-1188558,FeCu2SiS4,0.9,0.741,0.6669,0.7518506050109863,0.0213,MP_synthesized,False
+CO2 Reduction Catalyst (CO2RR),score_co2_reduction,04b8029dc7,KCu2SeS,0.9,0.74,0.666,0.5253714919090271,0.0031,Experimental,True
 Photocatalyst (Water Splitting),score_photocatalyst_h2o,mp-1078361,Fe2O3,0.9,0.768,0.6912,0.9682540893554688,2.2,MP_synthesized,False
 Photocatalyst (Water Splitting),score_photocatalyst_h2o,mp-1456,Fe2O3,0.9,0.768,0.6912,0.7802080512046814,2.2,MP_synthesized,False
 Photocatalyst (Water Splitting),score_photocatalyst_h2o,mp-19770,Fe2O3,0.9,0.768,0.6912,0.9818907380104064,2.2,MP_synthesized,False
@@ -119,6 +169,36 @@ Photocatalyst (Water Splitting),score_photocatalyst_h2o,mp-565814,Fe2O3,0.9,0.76
 Photocatalyst (Water Splitting),score_photocatalyst_h2o,mp-18816,Fe2SiO4,0.9,0.765,0.6885,0.744098961353302,2.7099,MP_synthesized,False
 Photocatalyst (Water Splitting),score_photocatalyst_h2o,mp-555755,Fe5(SiO4)3,0.9,0.758,0.6822,0.8711500763893127,2.4392,MP_synthesized,False
 Photocatalyst (Water Splitting),score_photocatalyst_h2o,mp-510670,FeHO2,0.9,0.755,0.6795,0.9114865064620972,1.8729,MP_synthesized,False
+Nitrogen Reduction Reaction (NRR) Catalyst,score_nitrogen_reduction_catalyst,c27c020e39,Fe6Si2P,0.9,0.81,0.7290000000000001,0.9570402503013612,0.0014,Experimental,True
+Nitrogen Reduction Reaction (NRR) Catalyst,score_nitrogen_reduction_catalyst,fa1c490746,Fe10SiB4P,0.9,0.803,0.7227,0.9882189035415648,0.0036,Experimental,True
+Nitrogen Reduction Reaction (NRR) Catalyst,score_nitrogen_reduction_catalyst,mp-18708,Fe3P,0.9,0.795,0.7155,0.9245282411575316,0.0,MP_synthesized,False
+Nitrogen Reduction Reaction (NRR) Catalyst,score_nitrogen_reduction_catalyst,mp-9913,Fe5B2P,0.9,0.795,0.7155,0.9847395420074464,0.0,MP_synthesized,False
+Nitrogen Reduction Reaction (NRR) Catalyst,score_nitrogen_reduction_catalyst,mp-6988,FeN,0.9,0.787,0.7083,0.6087753176689148,0.0,MP_synthesized,False
+Nitrogen Reduction Reaction (NRR) Catalyst,score_nitrogen_reduction_catalyst,mp-778,Fe2P,0.9,0.784,0.7056,0.8963738679885864,0.0,MP_synthesized,False
+Nitrogen Reduction Reaction (NRR) Catalyst,score_nitrogen_reduction_catalyst,8faa33925b,Fe4Se3S,0.9,0.775,0.6975,0.967870831489563,0.0077,Experimental,True
+Nitrogen Reduction Reaction (NRR) Catalyst,score_nitrogen_reduction_catalyst,1922a60086,Fe4SeS3,0.9,0.764,0.6876,0.9553924202919006,0.0196,Experimental,True
+Nitrogen Reduction Reaction (NRR) Catalyst,score_nitrogen_reduction_catalyst,mp-1005,FeP,0.9,0.758,0.6822,0.8678033351898193,0.0,MP_synthesized,False
+Nitrogen Reduction Reaction (NRR) Catalyst,score_nitrogen_reduction_catalyst,ffed0bf366,Mn3Fe3Si2P,0.9,0.757,0.6813,0.6410405039787292,0.0022,Experimental,True
+Methane Activation Catalyst,score_methane_activation_catalyst,c27c020e39,Fe6Si2P,0.85,0.81,0.6885,0.9570402503013612,0.0014,Experimental,True
+Methane Activation Catalyst,score_methane_activation_catalyst,fa1c490746,Fe10SiB4P,0.85,0.803,0.68255,0.9882189035415648,0.0036,Experimental,True
+Methane Activation Catalyst,score_methane_activation_catalyst,mp-18708,Fe3P,0.85,0.795,0.67575,0.9245282411575316,0.0,MP_synthesized,False
+Methane Activation Catalyst,score_methane_activation_catalyst,mp-9913,Fe5B2P,0.85,0.795,0.67575,0.9847395420074464,0.0,MP_synthesized,False
+Methane Activation Catalyst,score_methane_activation_catalyst,mp-1189032,Fe3S,0.85,0.794,0.6749,0.9300971031188964,0.0,MP_synthesized,False
+Methane Activation Catalyst,score_methane_activation_catalyst,mp-6988,FeN,0.85,0.787,0.66895,0.6087753176689148,0.0,MP_synthesized,False
+Methane Activation Catalyst,score_methane_activation_catalyst,mp-778,Fe2P,0.85,0.784,0.6664,0.8963738679885864,0.0,MP_synthesized,False
+Methane Activation Catalyst,score_methane_activation_catalyst,mp-18905,FeO,0.85,0.783,0.66555,0.9425278306007384,0.0,MP_synthesized,False
+Methane Activation Catalyst,score_methane_activation_catalyst,mp-1188678,Fe4O5,0.85,0.776,0.6596,0.9525421261787416,0.0,MP_synthesized,False
+Methane Activation Catalyst,score_methane_activation_catalyst,8faa33925b,Fe4Se3S,0.85,0.775,0.65875,0.967870831489563,0.0077,Experimental,True
+NOx Reduction Catalyst (SCR),score_nox_reduction_catalyst,mp-18905,FeO,0.9,0.783,0.7047,0.9425278306007384,0.0,MP_synthesized,False
+NOx Reduction Catalyst (SCR),score_nox_reduction_catalyst,mp-1188678,Fe4O5,0.9,0.776,0.6984,0.9525421261787416,0.0,MP_synthesized,False
+NOx Reduction Catalyst (SCR),score_nox_reduction_catalyst,mp-18731,Fe3O4,0.9,0.773,0.6957,0.9521861672401428,0.7548,MP_synthesized,False
+NOx Reduction Catalyst (SCR),score_nox_reduction_catalyst,mp-19306,Fe3O4,0.9,0.773,0.6957,0.7054262757301331,0.0,MP_synthesized,False
+NOx Reduction Catalyst (SCR),score_nox_reduction_catalyst,mp-31770,Fe3O4,0.9,0.773,0.6957,0.563198447227478,0.0,MP_synthesized,False
+NOx Reduction Catalyst (SCR),score_nox_reduction_catalyst,mp-505595,Fe3O4,0.9,0.773,0.6957,0.6656357645988464,0.4689,MP_synthesized,False
+NOx Reduction Catalyst (SCR),score_nox_reduction_catalyst,mp-510252,Fe3O4,0.9,0.773,0.6957,0.8186781406402588,0.2435,MP_synthesized,False
+NOx Reduction Catalyst (SCR),score_nox_reduction_catalyst,mp-611817,Fe3O4,0.9,0.773,0.6957,0.9930312633514404,0.0,MP_synthesized,False
+NOx Reduction Catalyst (SCR),score_nox_reduction_catalyst,mp-22635,Fe7SiO10,0.9,0.772,0.6948000000000001,0.9165456295013428,0.0,MP_synthesized,False
+NOx Reduction Catalyst (SCR),score_nox_reduction_catalyst,mp-505110,FeCuO2,0.9,0.772,0.6948000000000001,0.9085819125175476,0.0,MP_synthesized,False
 Semiconductor (General),score_semiconductor,mp-27492,CaFe5O7,0.95,0.759,0.72105,0.9654724597930908,1.247499999999999,MP_synthesized,False
 Semiconductor (General),score_semiconductor,mp-22223,Fe3BO5,0.95,0.759,0.72105,0.9368154406547546,1.019499999999999,MP_synthesized,False
 Semiconductor (General),score_semiconductor,mp-1179443,SiSe2,0.95,0.757,0.71915,0.9951345324516296,1.74,MP_synthesized,False
@@ -179,16 +259,36 @@ Piezoelectric,score_piezoelectric,mp-1020594,Zn2SiO4,0.9,0.698,0.6282,0.93690270
 Piezoelectric,score_piezoelectric,mp-1020636,Zn2SiO4,0.9,0.698,0.6282,0.8730641603469849,4.616,MP_synthesized,False
 Piezoelectric,score_piezoelectric,mp-3789,Zn2SiO4,0.9,0.698,0.6282,0.8740935921669006,4.616,MP_synthesized,False
 Piezoelectric,score_piezoelectric,mp-556163,Zn2SiO4,0.9,0.698,0.6282,0.8500943779945374,4.616,MP_synthesized,False
-Topological Insulator,score_topological_insulator,2333e0603b,K6CuHgSe26,0.85,0.729,0.6196499999999999,0.99794739484787,0.001,Experimental,True
-Topological Insulator,score_topological_insulator,mp-1212937,Cu2SiHgSe4,0.85,0.726,0.6171,0.6731109619140625,0.0161,MP_synthesized,False
-Topological Insulator,score_topological_insulator,45103d13a3,Hg3Se25,0.85,0.721,0.61285,0.9882185459136964,0.0031,Experimental,True
-Topological Insulator,score_topological_insulator,cf75ed66f2,K6HgAuSe26,0.85,0.721,0.61285,0.9985376596450806,0.0065,Experimental,True
-Topological Insulator,score_topological_insulator,mp-766026,RbCuSb2H2Se4O,0.85,0.72,0.612,0.9321070313453674,0.387299999999999,MP_synthesized,False
-Topological Insulator,score_topological_insulator,aedbb0f2f2,Rb6HgAuSe26,0.85,0.713,0.60605,0.9749746918678284,0.0027,Experimental,True
-Topological Insulator,score_topological_insulator,1b1b9ff602,Sb8Mo4Se3S,0.85,0.71,0.6034999999999999,0.9856463074684144,0.0048,Experimental,True
-Topological Insulator,score_topological_insulator,mp-643203,Cu6PbSe2Cl5O8,0.85,0.71,0.6034999999999999,0.8723181486129761,0.0,MP_synthesized,False
-Topological Insulator,score_topological_insulator,2f8ee4f6b9,Cu9(SbSe3)4,0.85,0.706,0.6001,0.5506000518798828,0.006,Experimental,True
-Topological Insulator,score_topological_insulator,c907eec581,Cu6SnMoSe8,0.85,0.703,0.5975499999999999,0.5876380801200867,0.2468,Experimental,True
+Phase Change Memory (PCM),score_phase_change_memory,mp-1078538,FeSe,0.85,0.779,0.66215,0.8709184527397156,0.0,MP_synthesized,False
+Phase Change Memory (PCM),score_phase_change_memory,mp-1078945,FeSe,0.85,0.779,0.66215,0.9228391647338868,0.0,MP_synthesized,False
+Phase Change Memory (PCM),score_phase_change_memory,mp-1080120,FeSe,0.85,0.779,0.66215,0.7547471523284912,0.0,MP_synthesized,False
+Phase Change Memory (PCM),score_phase_change_memory,mp-1090,FeSe,0.85,0.779,0.66215,0.8503022789955139,0.0,MP_synthesized,False
+Phase Change Memory (PCM),score_phase_change_memory,mp-20311,FeSe,0.85,0.779,0.66215,0.7721580862998962,0.0,MP_synthesized,False
+Phase Change Memory (PCM),score_phase_change_memory,mp-540702,Fe7Se8,0.85,0.776,0.6596,0.8774343132972717,0.0,MP_synthesized,False
+Phase Change Memory (PCM),score_phase_change_memory,8faa33925b,Fe4Se3S,0.85,0.775,0.65875,0.967870831489563,0.0077,Experimental,True
+Phase Change Memory (PCM),score_phase_change_memory,mp-2780,Fe3Se4,0.85,0.773,0.65705,0.8230061531066895,0.0,MP_synthesized,False
+Phase Change Memory (PCM),score_phase_change_memory,mp-505244,FeCuSe2,0.85,0.773,0.65705,0.5882399678230286,0.16,MP_synthesized,False
+Phase Change Memory (PCM),score_phase_change_memory,mp-10428,Cu8SiSe6,0.85,0.772,0.6562,0.9005647897720337,0.415199999999999,MP_synthesized,False
+High-k Dielectric (Gate Oxide),score_highk_dielectric,mp-6172,Al2Fe3(SiO4)3,1.0,0.7,0.7,0.8437656760215759,3.826900000000001,MP_synthesized,False
+High-k Dielectric (Gate Oxide),score_highk_dielectric,mp-863003,NaAl6Fe3Si6B3H3O30F,1.0,0.698,0.698,0.9070551991462708,3.5914,MP_synthesized,False
+High-k Dielectric (Gate Oxide),score_highk_dielectric,mp-1204107,Al4Fe2Si5O18,1.0,0.688,0.688,0.956125259399414,3.862699999999999,MP_synthesized,False
+High-k Dielectric (Gate Oxide),score_highk_dielectric,mp-1203355,KNaAl6Si6(HO6)4,1.0,0.68,0.68,0.9206044673919678,4.4606,MP_synthesized,False
+High-k Dielectric (Gate Oxide),score_highk_dielectric,mp-13703,Al4CO4,1.0,0.676,0.676,0.9682140946388244,3.823299999999999,MP_synthesized,False
+High-k Dielectric (Gate Oxide),score_highk_dielectric,mp-706657,Al13Si5H18ClO38,1.0,0.674,0.674,0.8309880495071411,4.3438,MP_synthesized,False
+High-k Dielectric (Gate Oxide),score_highk_dielectric,mp-560993,CaAl12Si4O27,1.0,0.674,0.674,0.9519827365875244,5.236199999999999,MP_synthesized,False
+High-k Dielectric (Gate Oxide),score_highk_dielectric,mp-1019381,Al7Si3BO18,1.0,0.673,0.673,0.9466469883918762,4.9414,MP_synthesized,False
+High-k Dielectric (Gate Oxide),score_highk_dielectric,mp-706243,Al2Si3H8(NO5)2,1.0,0.672,0.672,0.9801387786865234,4.9127,MP_synthesized,False
+High-k Dielectric (Gate Oxide),score_highk_dielectric,mp-24469,CaAl4Si2(HO6)2,1.0,0.672,0.672,0.9011601805686952,4.5346,MP_synthesized,False
+Nonlinear Optical (NLO) Material,score_nonlinear_optical,mp-18775,Fe3PO7,0.9,0.739,0.6651,0.8930516242980957,2.1744,MP_synthesized,False
+Nonlinear Optical (NLO) Material,score_nonlinear_optical,mp-19333,Fe2B2O5,0.9,0.735,0.6615,0.9018172025680542,3.2492,MP_synthesized,False
+Nonlinear Optical (NLO) Material,score_nonlinear_optical,mp-636960,Fe4P2O9,0.9,0.735,0.6615,0.934484362602234,3.1713,MP_synthesized,False
+Nonlinear Optical (NLO) Material,score_nonlinear_optical,mp-5004,Na2B2Se7,0.9,0.735,0.6615,0.9246336221694946,2.68,MP_synthesized,False
+Nonlinear Optical (NLO) Material,score_nonlinear_optical,mp-18625,KPSe6,0.9,0.732,0.6588,0.9938884377479552,2.16,MP_synthesized,False
+Nonlinear Optical (NLO) Material,score_nonlinear_optical,mp-542637,K2B2Se7,0.9,0.73,0.657,0.9573264122009276,2.664,MP_synthesized,False
+Nonlinear Optical (NLO) Material,score_nonlinear_optical,mp-562456,Fe3(PO4)2,0.9,0.725,0.6525,0.7022190690040588,3.352099999999999,MP_synthesized,False
+Nonlinear Optical (NLO) Material,score_nonlinear_optical,mp-17945,RbPSe6,0.9,0.725,0.6525,0.9984562397003174,2.18,MP_synthesized,False
+Nonlinear Optical (NLO) Material,score_nonlinear_optical,mp-569702,KPSe3,0.9,0.722,0.6498,0.9979405999183656,2.08,MP_synthesized,False
+Nonlinear Optical (NLO) Material,score_nonlinear_optical,mp-571452,KPSe3,0.9,0.722,0.6498,0.9919449687004088,2.08,MP_synthesized,False
 Permanent Magnet,score_permanent_magnet,8f56820db4,Sm2Fe14(SiC)3,0.9,0.453,0.4077,0.9058225750923156,0.0007,Experimental,True
 Permanent Magnet,score_permanent_magnet,mp-1196306,Sm2Fe14B,0.9,0.445,0.4005,0.965682089328766,0.0,MP_synthesized,False
 Permanent Magnet,score_permanent_magnet,mp-1196278,Sm2Fe14C,0.9,0.445,0.4005,0.9339928030967712,0.0,MP_synthesized,False
@@ -219,26 +319,36 @@ Magnetic Semiconductor / Spintronics,score_magnetic_semiconductor,mp-542896,Fe2O
 Magnetic Semiconductor / Spintronics,score_magnetic_semiconductor,mp-557546,Fe2O3,0.9,0.768,0.6912,0.9557393193244934,2.2,MP_synthesized,False
 Magnetic Semiconductor / Spintronics,score_magnetic_semiconductor,mp-565814,Fe2O3,0.9,0.768,0.6912,0.9708080887794496,2.2,MP_synthesized,False
 Magnetic Semiconductor / Spintronics,score_magnetic_semiconductor,mp-760,FeSe2,0.9,0.767,0.6903,0.7669041752815247,0.3741,MP_synthesized,False
-Thermal Barrier Coating,score_thermal_barrier,mp-1194879,CaZrSi6H4O17,0.85,0.65,0.5525,0.9248600006103516,4.8014,MP_synthesized,False
-Thermal Barrier Coating,score_thermal_barrier,mp-1194692,Na2ZrSi6(HO3)6,0.85,0.648,0.5508,0.924099326133728,4.9411000000000005,MP_synthesized,False
-Thermal Barrier Coating,score_thermal_barrier,95cad3379d,K2Zr(Si2O5)3,0.85,0.64,0.544,0.9209351539611816,4.9451,Experimental,True
-Thermal Barrier Coating,score_thermal_barrier,mp-773906,KNaZrSi3H4O11,0.85,0.64,0.544,0.9719938039779664,4.997400000000001,MP_synthesized,False
-Thermal Barrier Coating,score_thermal_barrier,mp-6824,Na2ZrSi4O11,0.85,0.635,0.53975,0.8834922909736633,4.5795,MP_synthesized,False
-Thermal Barrier Coating,score_thermal_barrier,mp-720643,K2ZrSi3(HO5)2,0.85,0.634,0.5389,0.9330313801765442,4.9328,MP_synthesized,False
-Thermal Barrier Coating,score_thermal_barrier,464061d7cb,Rb2Zr(Si2O5)3,0.85,0.632,0.5372,0.9184906482696532,4.9835,Experimental,True
-Thermal Barrier Coating,score_thermal_barrier,mp-560339,Ca2Zr(SiO3)4,0.85,0.63,0.5355,0.8469671010971069,4.8495,MP_synthesized,False
-Thermal Barrier Coating,score_thermal_barrier,mp-6600,K2Zr(SiO3)3,0.85,0.625,0.53125,0.882483184337616,4.813,MP_synthesized,False
-Thermal Barrier Coating,score_thermal_barrier,mp-1197323,CaZrAl9BO18,0.85,0.623,0.52955,0.9177680015563964,4.8919,MP_synthesized,False
-Thermal Interface Material,score_thermal_interface,mp-19800,Fe11Si5,0.7,0.823,0.5761,0.9425226449966432,0.0,MP_synthesized,False
-Thermal Interface Material,score_thermal_interface,mp-22787,Fe2Si,0.7,0.823,0.5761,0.9391635656356812,0.0,MP_synthesized,False
-Thermal Interface Material,score_thermal_interface,mp-2199,Fe3Si,0.7,0.823,0.5761,0.9462729692459106,0.0,MP_synthesized,False
-Thermal Interface Material,score_thermal_interface,mp-449,Fe5Si3,0.7,0.823,0.5761,0.9463542699813844,0.0,MP_synthesized,False
-Thermal Interface Material,score_thermal_interface,68b6a98183,Fe5Si3H,0.7,0.822,0.5753999999999999,0.9529443383216858,0.0002,Experimental,True
-Thermal Interface Material,score_thermal_interface,mp-871,FeSi,0.7,0.821,0.5746999999999999,0.8853039145469666,0.068,MP_synthesized,False
-Thermal Interface Material,score_thermal_interface,mp-1188610,Fe5Si2B,0.7,0.817,0.5719,0.9546083211898804,0.0,MP_synthesized,False
-Thermal Interface Material,score_thermal_interface,mp-1105372,Fe5SiB2,0.7,0.811,0.5677,0.9903822541236876,0.0,MP_synthesized,False
-Thermal Interface Material,score_thermal_interface,c27c020e39,Fe6Si2P,0.7,0.81,0.567,0.9570402503013612,0.0014,Experimental,True
-Thermal Interface Material,score_thermal_interface,mp-1915,Fe2B,0.7,0.808,0.5656,0.9464633464813232,0.0,MP_synthesized,False
+Spintronic MTJ (Magnetic Tunnel Junction),score_spintronic_mtj,mp-6988,FeN,0.95,0.787,0.74765,0.6087753176689148,0.0,MP_synthesized,False
+Spintronic MTJ (Magnetic Tunnel Junction),score_spintronic_mtj,mp-18905,FeO,0.95,0.783,0.74385,0.9425278306007384,0.0,MP_synthesized,False
+Spintronic MTJ (Magnetic Tunnel Junction),score_spintronic_mtj,mp-1188678,Fe4O5,0.95,0.776,0.7372,0.9525421261787416,0.0,MP_synthesized,False
+Spintronic MTJ (Magnetic Tunnel Junction),score_spintronic_mtj,mp-18731,Fe3O4,0.95,0.773,0.73435,0.9521861672401428,0.7548,MP_synthesized,False
+Spintronic MTJ (Magnetic Tunnel Junction),score_spintronic_mtj,mp-19306,Fe3O4,0.95,0.773,0.73435,0.7054262757301331,0.0,MP_synthesized,False
+Spintronic MTJ (Magnetic Tunnel Junction),score_spintronic_mtj,mp-31770,Fe3O4,0.95,0.773,0.73435,0.563198447227478,0.0,MP_synthesized,False
+Spintronic MTJ (Magnetic Tunnel Junction),score_spintronic_mtj,mp-505595,Fe3O4,0.95,0.773,0.73435,0.6656357645988464,0.4689,MP_synthesized,False
+Spintronic MTJ (Magnetic Tunnel Junction),score_spintronic_mtj,mp-510252,Fe3O4,0.95,0.773,0.73435,0.8186781406402588,0.2435,MP_synthesized,False
+Spintronic MTJ (Magnetic Tunnel Junction),score_spintronic_mtj,mp-611817,Fe3O4,0.95,0.773,0.73435,0.9930312633514404,0.0,MP_synthesized,False
+Spintronic MTJ (Magnetic Tunnel Junction),score_spintronic_mtj,mp-22635,Fe7SiO10,0.95,0.772,0.7333999999999999,0.9165456295013428,0.0,MP_synthesized,False
+Thermal Barrier Coating (TBC),score_thermal_barrier,mp-1194879,CaZrSi6H4O17,0.85,0.65,0.5525,0.9248600006103516,4.8014,MP_synthesized,False
+Thermal Barrier Coating (TBC),score_thermal_barrier,mp-1194692,Na2ZrSi6(HO3)6,0.85,0.648,0.5508,0.924099326133728,4.9411000000000005,MP_synthesized,False
+Thermal Barrier Coating (TBC),score_thermal_barrier,95cad3379d,K2Zr(Si2O5)3,0.85,0.64,0.544,0.9209351539611816,4.9451,Experimental,True
+Thermal Barrier Coating (TBC),score_thermal_barrier,mp-773906,KNaZrSi3H4O11,0.85,0.64,0.544,0.9719938039779664,4.997400000000001,MP_synthesized,False
+Thermal Barrier Coating (TBC),score_thermal_barrier,mp-6824,Na2ZrSi4O11,0.85,0.635,0.53975,0.8834922909736633,4.5795,MP_synthesized,False
+Thermal Barrier Coating (TBC),score_thermal_barrier,mp-720643,K2ZrSi3(HO5)2,0.85,0.634,0.5389,0.9330313801765442,4.9328,MP_synthesized,False
+Thermal Barrier Coating (TBC),score_thermal_barrier,464061d7cb,Rb2Zr(Si2O5)3,0.85,0.632,0.5372,0.9184906482696532,4.9835,Experimental,True
+Thermal Barrier Coating (TBC),score_thermal_barrier,mp-560339,Ca2Zr(SiO3)4,0.85,0.63,0.5355,0.8469671010971069,4.8495,MP_synthesized,False
+Thermal Barrier Coating (TBC),score_thermal_barrier,mp-6600,K2Zr(SiO3)3,0.85,0.625,0.53125,0.882483184337616,4.813,MP_synthesized,False
+Thermal Barrier Coating (TBC),score_thermal_barrier,mp-1197323,CaZrAl9BO18,0.85,0.623,0.52955,0.9177680015563964,4.8919,MP_synthesized,False
+Thermal Interface Material (TIM),score_thermal_interface,mp-19800,Fe11Si5,0.7,0.823,0.5761,0.9425226449966432,0.0,MP_synthesized,False
+Thermal Interface Material (TIM),score_thermal_interface,mp-22787,Fe2Si,0.7,0.823,0.5761,0.9391635656356812,0.0,MP_synthesized,False
+Thermal Interface Material (TIM),score_thermal_interface,mp-2199,Fe3Si,0.7,0.823,0.5761,0.9462729692459106,0.0,MP_synthesized,False
+Thermal Interface Material (TIM),score_thermal_interface,mp-449,Fe5Si3,0.7,0.823,0.5761,0.9463542699813844,0.0,MP_synthesized,False
+Thermal Interface Material (TIM),score_thermal_interface,68b6a98183,Fe5Si3H,0.7,0.822,0.5753999999999999,0.9529443383216858,0.0002,Experimental,True
+Thermal Interface Material (TIM),score_thermal_interface,mp-871,FeSi,0.7,0.821,0.5746999999999999,0.8853039145469666,0.068,MP_synthesized,False
+Thermal Interface Material (TIM),score_thermal_interface,mp-1188610,Fe5Si2B,0.7,0.817,0.5719,0.9546083211898804,0.0,MP_synthesized,False
+Thermal Interface Material (TIM),score_thermal_interface,mp-1105372,Fe5SiB2,0.7,0.811,0.5677,0.9903822541236876,0.0,MP_synthesized,False
+Thermal Interface Material (TIM),score_thermal_interface,c27c020e39,Fe6Si2P,0.7,0.81,0.567,0.9570402503013612,0.0014,Experimental,True
+Thermal Interface Material (TIM),score_thermal_interface,mp-1915,Fe2B,0.7,0.808,0.5656,0.9464633464813232,0.0,MP_synthesized,False
 Hard Coating / Wear Resistant,score_hard_coating,f7d9b0ee4d,Fe2BMoO5,0.9,0.72,0.648,0.8648303747177124,2.583,Experimental,True
 Hard Coating / Wear Resistant,score_hard_coating,7747f458d7,CrFe11(BO5)4,0.9,0.707,0.6363,0.9556346535682678,1.2001,Experimental,True
 Hard Coating / Wear Resistant,score_hard_coating,bab7675e0f,CrFe5(BO5)2,0.9,0.705,0.6345,0.9476639032363892,1.3687,Experimental,True
@@ -269,6 +379,36 @@ Refractory / UHTC,score_refractory,mp-556667,FeMoO4,0.85,0.703,0.597549999999999
 Refractory / UHTC,score_refractory,mp-557596,Na2TiFe5(Si3O10)2,0.85,0.701,0.59585,0.8986483216285706,2.3118,MP_synthesized,False
 Refractory / UHTC,score_refractory,mp-1191323,CuMoO4,0.85,0.698,0.5932999999999999,0.9159922003746032,0.0,MP_synthesized,False
 Refractory / UHTC,score_refractory,mp-541991,CuMoO4,0.85,0.698,0.5932999999999999,0.9014658331871032,0.0,MP_synthesized,False
+Qubit Host Material,score_qubit_host,mp-11713,SiC,0.8,0.762,0.6096,0.8213200569152832,3.023,MP_synthesized,False
+Qubit Host Material,score_qubit_host,mp-1197730,SiC,0.8,0.762,0.6096,0.8208975791931152,3.023,MP_synthesized,False
+Qubit Host Material,score_qubit_host,mp-1199063,SiC,0.8,0.762,0.6096,0.8348295092582703,3.023,MP_synthesized,False
+Qubit Host Material,score_qubit_host,mp-1200168,SiC,0.8,0.762,0.6096,0.8354644775390625,3.023,MP_synthesized,False
+Qubit Host Material,score_qubit_host,mp-1200692,SiC,0.8,0.762,0.6096,0.8214626908302307,3.023,MP_synthesized,False
+Qubit Host Material,score_qubit_host,mp-1200848,SiC,0.8,0.762,0.6096,0.8347561359405518,3.023,MP_synthesized,False
+Qubit Host Material,score_qubit_host,mp-1204356,SiC,0.8,0.762,0.6096,0.8215762376785278,3.023,MP_synthesized,False
+Qubit Host Material,score_qubit_host,mp-567505,SiC,0.8,0.762,0.6096,0.8220356702804565,3.023,MP_synthesized,False
+Qubit Host Material,score_qubit_host,mp-567551,SiC,0.8,0.762,0.6096,0.8213546276092529,3.023,MP_synthesized,False
+Qubit Host Material,score_qubit_host,mp-568619,SiC,0.8,0.762,0.6096,0.8215185403823853,3.023,MP_synthesized,False
+Topological Insulator,score_topological_insulator,2333e0603b,K6CuHgSe26,0.85,0.729,0.6196499999999999,0.99794739484787,0.001,Experimental,True
+Topological Insulator,score_topological_insulator,mp-1212937,Cu2SiHgSe4,0.85,0.726,0.6171,0.6731109619140625,0.0161,MP_synthesized,False
+Topological Insulator,score_topological_insulator,45103d13a3,Hg3Se25,0.85,0.721,0.61285,0.9882185459136964,0.0031,Experimental,True
+Topological Insulator,score_topological_insulator,cf75ed66f2,K6HgAuSe26,0.85,0.721,0.61285,0.9985376596450806,0.0065,Experimental,True
+Topological Insulator,score_topological_insulator,mp-766026,RbCuSb2H2Se4O,0.85,0.72,0.612,0.9321070313453674,0.387299999999999,MP_synthesized,False
+Topological Insulator,score_topological_insulator,aedbb0f2f2,Rb6HgAuSe26,0.85,0.713,0.60605,0.9749746918678284,0.0027,Experimental,True
+Topological Insulator,score_topological_insulator,1b1b9ff602,Sb8Mo4Se3S,0.85,0.71,0.6034999999999999,0.9856463074684144,0.0048,Experimental,True
+Topological Insulator,score_topological_insulator,mp-643203,Cu6PbSe2Cl5O8,0.85,0.71,0.6034999999999999,0.8723181486129761,0.0,MP_synthesized,False
+Topological Insulator,score_topological_insulator,2f8ee4f6b9,Cu9(SbSe3)4,0.85,0.706,0.6001,0.5506000518798828,0.006,Experimental,True
+Topological Insulator,score_topological_insulator,c907eec581,Cu6SnMoSe8,0.85,0.703,0.5975499999999999,0.5876380801200867,0.2468,Experimental,True
+Topological Qubit / Majorana Host,score_topological_qubit_majorana,mp-643203,Cu6PbSe2Cl5O8,0.9,0.71,0.639,0.8723181486129761,0.0,MP_synthesized,False
+Topological Qubit / Majorana Host,score_topological_qubit_majorana,a576e33f10,Al(CuSe)8,0.9,0.702,0.6318,0.697711706161499,0.0004,Experimental,True
+Topological Qubit / Majorana Host,score_topological_qubit_majorana,mp-1200386,Mo15Pb2Se19,0.9,0.702,0.6318,0.9528269171714784,0.018799999999999,MP_synthesized,False
+Topological Qubit / Majorana Host,score_topological_qubit_majorana,mp-579463,Cu2Pb(SeO3)3,0.9,0.701,0.6309,0.9262595176696776,0.2694,MP_synthesized,False
+Topological Qubit / Majorana Host,score_topological_qubit_majorana,mp-22721,Mo6PbSe8,0.9,0.701,0.6309,0.9735924601554872,0.0,MP_synthesized,False
+Topological Qubit / Majorana Host,score_topological_qubit_majorana,730a38d2c9,AlCu5Se6,0.9,0.7,0.63,0.5876436829566956,0.001,Experimental,True
+Topological Qubit / Majorana Host,score_topological_qubit_majorana,73307f231f,AlCu7Se8,0.9,0.7,0.63,0.7446295619010925,0.0012,Experimental,True
+Topological Qubit / Majorana Host,score_topological_qubit_majorana,mp-1193833,Cu2PbSe2(ClO3)2,0.9,0.694,0.6245999999999999,0.9048976302146912,0.0,MP_synthesized,False
+Topological Qubit / Majorana Host,score_topological_qubit_majorana,mp-1078113,V(FeSe2)2,0.9,0.694,0.6245999999999999,0.8275555372238159,0.0,MP_synthesized,False
+Topological Qubit / Majorana Host,score_topological_qubit_majorana,121acbc5ec,K4Al3SiSb16,0.9,0.69,0.621,0.9871554374694824,0.037,Experimental,True
 Superconductor,score_superconductor,mp-1204465,Fe3P4PbO14,1.0,0.681,0.681,0.8849100470542908,0.0,MP_synthesized,False
 Superconductor,score_superconductor,78435e6f1c,Fe8Si3Mo12AsN4,1.0,0.676,0.676,0.8061076998710632,0.0011,Experimental,True
 Superconductor,score_superconductor,mp-22806,Fe2P4PbO14,1.0,0.669,0.669,0.8691602349281311,0.0,MP_synthesized,False
@@ -289,16 +429,6 @@ Radiation Detector / Scintillator,score_radiation_detector,mp-16961,Na6Si2Se7,0.
 Radiation Detector / Scintillator,score_radiation_detector,5da5ff50dd,Fe3Se4(ClO5)2,0.9,0.73,0.657,0.9338654279708862,2.7925,Experimental,True
 Radiation Detector / Scintillator,score_radiation_detector,78527fa813,Na3SiSe3,0.9,0.73,0.657,0.9651365876197816,2.5175,Experimental,True
 Radiation Detector / Scintillator,score_radiation_detector,b2a87053a9,Na4Ca(SiSe3)2,0.9,0.73,0.657,0.9978985786437988,2.7363,Experimental,True
-Solid Oxide Fuel Cell Electrolyte,score_sofc_electrolyte,mp-1194879,CaZrSi6H4O17,0.9,0.65,0.5850000000000001,0.9248600006103516,4.8014,MP_synthesized,False
-Solid Oxide Fuel Cell Electrolyte,score_sofc_electrolyte,mp-1194692,Na2ZrSi6(HO3)6,0.9,0.648,0.5832,0.924099326133728,4.9411000000000005,MP_synthesized,False
-Solid Oxide Fuel Cell Electrolyte,score_sofc_electrolyte,95cad3379d,K2Zr(Si2O5)3,0.9,0.64,0.5760000000000001,0.9209351539611816,4.9451,Experimental,True
-Solid Oxide Fuel Cell Electrolyte,score_sofc_electrolyte,mp-773906,KNaZrSi3H4O11,0.9,0.64,0.5760000000000001,0.9719938039779664,4.997400000000001,MP_synthesized,False
-Solid Oxide Fuel Cell Electrolyte,score_sofc_electrolyte,mp-6824,Na2ZrSi4O11,0.9,0.635,0.5715,0.8834922909736633,4.5795,MP_synthesized,False
-Solid Oxide Fuel Cell Electrolyte,score_sofc_electrolyte,mp-720643,K2ZrSi3(HO5)2,0.9,0.634,0.5706,0.9330313801765442,4.9328,MP_synthesized,False
-Solid Oxide Fuel Cell Electrolyte,score_sofc_electrolyte,464061d7cb,Rb2Zr(Si2O5)3,0.9,0.632,0.5688,0.9184906482696532,4.9835,Experimental,True
-Solid Oxide Fuel Cell Electrolyte,score_sofc_electrolyte,mp-560339,Ca2Zr(SiO3)4,0.9,0.63,0.5670000000000001,0.8469671010971069,4.8495,MP_synthesized,False
-Solid Oxide Fuel Cell Electrolyte,score_sofc_electrolyte,5dab476e7b,ZrFe(ClO)2,0.9,0.629,0.5661,0.8289785385131836,3.1785,Experimental,True
-Solid Oxide Fuel Cell Electrolyte,score_sofc_electrolyte,5e927762e0,Rb2Zr(SeO4)3,0.9,0.625,0.5625,0.9795879125595092,3.6649,Experimental,True
 Multiferroic,score_multiferroic,mp-818286,BaTiFe2(SiO5)2,0.9,0.632,0.5688,0.9357617497444152,1.544,MP_synthesized,False
 Multiferroic,score_multiferroic,mp-31758,Ba3NbFe3(SiO7)2,0.9,0.604,0.5436,0.7594121098518372,2.3971,MP_synthesized,False
 Multiferroic,score_multiferroic,mp-1190340,Ba3TaFe3(SiO7)2,0.9,0.597,0.5373,0.7616766095161438,2.5099,MP_synthesized,False
@@ -309,3 +439,273 @@ Multiferroic,score_multiferroic,80e1b7885e,Ti4CrFe3(BiO5)4,0.9,0.561,0.5049,0.94
 Multiferroic,score_multiferroic,444d9aee25,Ti2CrFe(BiO5)2,0.9,0.559,0.5031000000000001,0.900995910167694,1.5589,Experimental,True
 Multiferroic,score_multiferroic,490cfa88f3,Ti4Cr3Fe(BiO5)4,0.9,0.557,0.5013000000000001,0.8538954257965088,1.8237,Experimental,True
 Multiferroic,score_multiferroic,c8735f7af8,Ba4Ti4FeCoO14,0.9,0.556,0.5004000000000001,0.7948420643806458,2.786,Experimental,True
+Biodegradable Implant,score_biodegradable_implant,mp-778,Fe2P,0.9,0.784,0.7056,0.8963738679885864,0.0,MP_synthesized,False
+Biodegradable Implant,score_biodegradable_implant,mp-18905,FeO,0.9,0.783,0.7047,0.9425278306007384,0.0,MP_synthesized,False
+Biodegradable Implant,score_biodegradable_implant,mp-1188678,Fe4O5,0.9,0.776,0.6984,0.9525421261787416,0.0,MP_synthesized,False
+Biodegradable Implant,score_biodegradable_implant,mp-18731,Fe3O4,0.9,0.773,0.6957,0.9521861672401428,0.7548,MP_synthesized,False
+Biodegradable Implant,score_biodegradable_implant,mp-19306,Fe3O4,0.9,0.773,0.6957,0.7054262757301331,0.0,MP_synthesized,False
+Biodegradable Implant,score_biodegradable_implant,mp-31770,Fe3O4,0.9,0.773,0.6957,0.563198447227478,0.0,MP_synthesized,False
+Biodegradable Implant,score_biodegradable_implant,mp-505595,Fe3O4,0.9,0.773,0.6957,0.6656357645988464,0.4689,MP_synthesized,False
+Biodegradable Implant,score_biodegradable_implant,mp-510252,Fe3O4,0.9,0.773,0.6957,0.8186781406402588,0.2435,MP_synthesized,False
+Biodegradable Implant,score_biodegradable_implant,mp-611817,Fe3O4,0.9,0.773,0.6957,0.9930312633514404,0.0,MP_synthesized,False
+Biodegradable Implant,score_biodegradable_implant,mp-22635,Fe7SiO10,0.9,0.772,0.6948000000000001,0.9165456295013428,0.0,MP_synthesized,False
+Bone Scaffold / Hydroxyapatite Analog,score_bone_scaffold,2354187e9b,K8CaFe7P8(O7F2)4,0.95,0.683,0.64885,0.8182374835014343,,Experimental,True
+Bone Scaffold / Hydroxyapatite Analog,score_bone_scaffold,175b3ec7cb,Sr3CaCu4(P2O7)4,0.95,0.669,0.6355500000000001,0.9052997827529908,,Experimental,True
+Bone Scaffold / Hydroxyapatite Analog,score_bone_scaffold,0a83f1d4c9,Ca2Zn3Fe(PO4)4,0.95,0.661,0.62795,0.8695187568664551,3.696,Experimental,True
+Bone Scaffold / Hydroxyapatite Analog,score_bone_scaffold,176e862a4e,Ca2ZnFe3(PO4)4,0.95,0.659,0.62605,0.8971784710884094,,Experimental,True
+Bone Scaffold / Hydroxyapatite Analog,score_bone_scaffold,e22a962386,SrCaFe4Ni2(P2O7)4,0.95,0.653,0.62035,0.8225640654563904,,Experimental,True
+Bone Scaffold / Hydroxyapatite Analog,score_bone_scaffold,mp-18308,CaZn2(PO4)2,0.95,0.652,0.6194,0.8849044442176819,3.787199999999999,MP_synthesized,False
+Bone Scaffold / Hydroxyapatite Analog,score_bone_scaffold,c9643b954a,Ca2Si(P2O7)2,0.95,0.649,0.61655,0.8832396864891052,,Experimental,True
+Bone Scaffold / Hydroxyapatite Analog,score_bone_scaffold,7e43388b31,SrCa19Si4(PO6)8,0.95,0.648,0.6156,0.7966093420982361,4.7941,Experimental,True
+Bone Scaffold / Hydroxyapatite Analog,score_bone_scaffold,b31842a2ae,SrCa4Si(PO6)2,0.95,0.647,0.61465,0.781177818775177,,Experimental,True
+Bone Scaffold / Hydroxyapatite Analog,score_bone_scaffold,e143a1602a,Sr3Ca17Si4(PO6)8,0.95,0.647,0.61465,0.7882918119430542,,Experimental,True
+Antibacterial Coating,score_antibacterial_coating,mp-10914,K3Cu5O4,0.9,0.737,0.6633,0.9109367728233336,1.593499999999999,MP_synthesized,False
+Antibacterial Coating,score_antibacterial_coating,mp-15895,Cu2SiS3,0.9,0.736,0.6624,0.9975625276565552,0.8804000000000001,MP_synthesized,False
+Antibacterial Coating,score_antibacterial_coating,mp-9248,Cu2SiS3,0.9,0.736,0.6624,0.9970316886901855,1.197,MP_synthesized,False
+Antibacterial Coating,score_antibacterial_coating,mp-649944,Na2Cu3(SiO3)4,0.9,0.729,0.6561,0.9411109685897828,0.6186,MP_synthesized,False
+Antibacterial Coating,score_antibacterial_coating,mp-554627,Cu6PS5Br,0.9,0.728,0.6552,0.5374899506568909,0.818399999999999,MP_synthesized,False
+Antibacterial Coating,score_antibacterial_coating,1ebe61bcc3,Cu6SiMoS8,0.9,0.727,0.6543,0.9789699912071228,1.0301,Experimental,True
+Antibacterial Coating,score_antibacterial_coating,mp-28491,Cu2SO4,0.9,0.726,0.6534,0.967805802822113,1.632,MP_synthesized,False
+Antibacterial Coating,score_antibacterial_coating,mp-866635,CuH3NCl,0.9,0.723,0.6507,0.9470205903053284,2.1259,MP_synthesized,False
+Antibacterial Coating,score_antibacterial_coating,mp-644277,Fe2CuH4(OF4)2,0.9,0.722,0.6498,0.8853417634963989,1.0783,MP_synthesized,False
+Antibacterial Coating,score_antibacterial_coating,mp-1103519,KCuO,0.9,0.721,0.6489,0.7883223295211792,1.782,MP_synthesized,False
+CO2 Capture Sorbent,score_co2_capture_sorbent,mp-27492,CaFe5O7,0.9,0.759,0.6831,0.9654724597930908,1.247499999999999,MP_synthesized,False
+CO2 Capture Sorbent,score_co2_capture_sorbent,mp-3742,SrFe12O19,0.9,0.756,0.6804,0.915353536605835,1.140199999999999,MP_synthesized,False
+CO2 Capture Sorbent,score_co2_capture_sorbent,mp-505170,NaFe3O5,0.9,0.753,0.6777,0.947171688079834,1.5371,MP_synthesized,False
+CO2 Capture Sorbent,score_co2_capture_sorbent,mp-19193,CaFe3O5,0.9,0.747,0.6723,0.9528610706329346,1.3614,MP_synthesized,False
+CO2 Capture Sorbent,score_co2_capture_sorbent,mp-559532,NaFe3Si3O10,0.9,0.744,0.6696,0.917672038078308,1.371699999999999,MP_synthesized,False
+CO2 Capture Sorbent,score_co2_capture_sorbent,mp-721924,CaFe3Si2HO9,0.9,0.739,0.6651,0.928898274898529,1.3944,MP_synthesized,False
+CO2 Capture Sorbent,score_co2_capture_sorbent,mp-1204015,CaFe3Si2O9,0.9,0.739,0.6651,0.9806867241859436,1.5845,MP_synthesized,False
+CO2 Capture Sorbent,score_co2_capture_sorbent,mp-859186,CaFe3Si2O9,0.9,0.739,0.6651,0.9315608739852904,1.150599999999999,MP_synthesized,False
+CO2 Capture Sorbent,score_co2_capture_sorbent,mp-1104614,CaFeSeO,0.9,0.737,0.6633,0.929317593574524,1.917199999999999,MP_synthesized,False
+CO2 Capture Sorbent,score_co2_capture_sorbent,mp-10914,K3Cu5O4,0.9,0.737,0.6633,0.9109367728233336,1.593499999999999,MP_synthesized,False
+Desalination Membrane Material,score_desalination_membrane,mp-27949,Si2H6O,0.85,0.766,0.6511,0.9625323414802552,5.2626,MP_synthesized,False
+Desalination Membrane Material,score_desalination_membrane,mp-18816,Fe2SiO4,0.85,0.765,0.65025,0.744098961353302,2.7099,MP_synthesized,False
+Desalination Membrane Material,score_desalination_membrane,mp-20313,Fe2SiO4,0.85,0.765,0.65025,0.967015027999878,3.6769,MP_synthesized,False
+Desalination Membrane Material,score_desalination_membrane,mp-555755,Fe5(SiO4)3,0.85,0.758,0.6443,0.8711500763893127,2.4392,MP_synthesized,False
+Desalination Membrane Material,score_desalination_membrane,mp-21939,FeSiO3,0.85,0.755,0.6417499999999999,0.9514282941818236,2.7758000000000003,MP_synthesized,False
+Desalination Membrane Material,score_desalination_membrane,mp-561362,FeSiO3,0.85,0.755,0.6417499999999999,0.9303261637687684,2.9807,MP_synthesized,False
+Desalination Membrane Material,score_desalination_membrane,mp-650392,FeSiO3,0.85,0.755,0.6417499999999999,0.9628406763076782,2.7187,MP_synthesized,False
+Desalination Membrane Material,score_desalination_membrane,mp-2245,Si3N4,0.85,0.744,0.6324,0.98034006357193,5.1,MP_synthesized,False
+Desalination Membrane Material,score_desalination_membrane,mp-568867,Si3N4,0.85,0.744,0.6324,0.9502456188201904,5.1,MP_synthesized,False
+Desalination Membrane Material,score_desalination_membrane,mp-583712,Si3N4,0.85,0.744,0.6324,0.9799315333366394,5.1,MP_synthesized,False
+Photocatalytic Pollutant Degradation,score_photocatalytic_pollutant_degradation,mp-1078361,Fe2O3,0.9,0.768,0.6912,0.9682540893554688,2.2,MP_synthesized,False
+Photocatalytic Pollutant Degradation,score_photocatalytic_pollutant_degradation,mp-1456,Fe2O3,0.9,0.768,0.6912,0.7802080512046814,2.2,MP_synthesized,False
+Photocatalytic Pollutant Degradation,score_photocatalytic_pollutant_degradation,mp-19770,Fe2O3,0.9,0.768,0.6912,0.9818907380104064,2.2,MP_synthesized,False
+Photocatalytic Pollutant Degradation,score_photocatalytic_pollutant_degradation,mp-510080,Fe2O3,0.9,0.768,0.6912,0.993530809879303,2.2,MP_synthesized,False
+Photocatalytic Pollutant Degradation,score_photocatalytic_pollutant_degradation,mp-542896,Fe2O3,0.9,0.768,0.6912,0.9099158644676208,2.2,MP_synthesized,False
+Photocatalytic Pollutant Degradation,score_photocatalytic_pollutant_degradation,mp-557546,Fe2O3,0.9,0.768,0.6912,0.9557393193244934,2.2,MP_synthesized,False
+Photocatalytic Pollutant Degradation,score_photocatalytic_pollutant_degradation,mp-565814,Fe2O3,0.9,0.768,0.6912,0.9708080887794496,2.2,MP_synthesized,False
+Photocatalytic Pollutant Degradation,score_photocatalytic_pollutant_degradation,mp-18816,Fe2SiO4,0.9,0.765,0.6885,0.744098961353302,2.7099,MP_synthesized,False
+Photocatalytic Pollutant Degradation,score_photocatalytic_pollutant_degradation,mp-555755,Fe5(SiO4)3,0.9,0.758,0.6822,0.8711500763893127,2.4392,MP_synthesized,False
+Photocatalytic Pollutant Degradation,score_photocatalytic_pollutant_degradation,mp-510670,FeHO2,0.9,0.755,0.6795,0.9114865064620972,1.8729,MP_synthesized,False
+Nuclear Fuel Cladding,score_nuclear_fuel_cladding,mp-871,FeSi,0.85,0.821,0.69785,0.8853039145469666,0.068,MP_synthesized,False
+Nuclear Fuel Cladding,score_nuclear_fuel_cladding,mp-1068250,Ca(FeSi)2,0.85,0.786,0.6681,0.9566932916641236,0.0,MP_synthesized,False
+Nuclear Fuel Cladding,score_nuclear_fuel_cladding,mp-778,Fe2P,0.85,0.784,0.6664,0.8963738679885864,0.0,MP_synthesized,False
+Nuclear Fuel Cladding,score_nuclear_fuel_cladding,mp-18905,FeO,0.85,0.783,0.66555,0.9425278306007384,0.0,MP_synthesized,False
+Nuclear Fuel Cladding,score_nuclear_fuel_cladding,mp-20311,FeSe,0.85,0.779,0.66215,0.7721580862998962,0.0,MP_synthesized,False
+Nuclear Fuel Cladding,score_nuclear_fuel_cladding,mp-1188678,Fe4O5,0.85,0.776,0.6596,0.9525421261787416,0.0,MP_synthesized,False
+Nuclear Fuel Cladding,score_nuclear_fuel_cladding,8faa33925b,Fe4Se3S,0.85,0.775,0.65875,0.967870831489563,0.0077,Experimental,True
+Nuclear Fuel Cladding,score_nuclear_fuel_cladding,mp-18731,Fe3O4,0.85,0.773,0.65705,0.9521861672401428,0.7548,MP_synthesized,False
+Nuclear Fuel Cladding,score_nuclear_fuel_cladding,mp-19306,Fe3O4,0.85,0.773,0.65705,0.7054262757301331,0.0,MP_synthesized,False
+Nuclear Fuel Cladding,score_nuclear_fuel_cladding,mp-31770,Fe3O4,0.85,0.773,0.65705,0.563198447227478,0.0,MP_synthesized,False
+Tritium Breeder Material,score_tritium_breeder,mp-756984,LiFeSiO4,0.95,0.694,0.6592999999999999,0.6479373574256897,2.651799999999999,MP_synthesized,False
+Tritium Breeder Material,score_tritium_breeder,e1b81e9500,Li4SiSe4,0.95,0.689,0.65455,0.9364111423492432,2.4348,Experimental,True
+Tritium Breeder Material,score_tritium_breeder,mp-19061,LiFe(SiO3)2,0.95,0.688,0.6536,0.9045082330703736,2.7522,MP_synthesized,False
+Tritium Breeder Material,score_tritium_breeder,mp-16283,KNa2Li3Fe2(Si2O5)6,0.95,0.686,0.6517000000000001,0.9106366634368896,3.329399999999999,MP_synthesized,False
+Tritium Breeder Material,score_tritium_breeder,495bc34d10,Na5LiSi2Se7,0.95,0.685,0.65075,0.9888594150543212,2.2604,Experimental,True
+Tritium Breeder Material,score_tritium_breeder,mp-6015,LiSiNO,0.95,0.682,0.6479,0.8299767374992371,5.254399999999999,MP_synthesized,False
+Tritium Breeder Material,score_tritium_breeder,7feab89bc7,LiH3SeO,0.95,0.68,0.646,0.9899072647094728,3.4013,Experimental,True
+Tritium Breeder Material,score_tritium_breeder,mp-558555,LiFe(SeO3)2,0.95,0.678,0.6441,0.8994418978691101,2.6596,MP_synthesized,False
+Tritium Breeder Material,score_tritium_breeder,mp-6838,Na2LiFe(Si2O5)3,0.95,0.678,0.6441,0.8731895685195923,3.3949,MP_synthesized,False
+Tritium Breeder Material,score_tritium_breeder,mp-5853,LiSi2N3,0.95,0.677,0.64315,0.96942138671875,5.0143,MP_synthesized,False
+Radiation Shielding,score_radiation_shielding,mp-555778,Fe12PbO19,0.95,0.744,0.7068,0.8815585374832153,1.1208,MP_synthesized,False
+Radiation Shielding,score_radiation_shielding,mp-22037,Cu6PbO8,0.95,0.72,0.6839999999999999,0.7777091264724731,0.0,MP_synthesized,False
+Radiation Shielding,score_radiation_shielding,c903955d2c,Cu6PbClO8,0.95,0.717,0.6811499999999999,0.7789653539657593,0.0018,Experimental,True
+Radiation Shielding,score_radiation_shielding,mp-643203,Cu6PbSe2Cl5O8,0.95,0.71,0.6745,0.8723181486129761,0.0,MP_synthesized,False
+Radiation Shielding,score_radiation_shielding,d7c01e7e1c,PbSe7Br2,0.95,0.703,0.6678499999999999,0.998234748840332,,Experimental,True
+Radiation Shielding,score_radiation_shielding,mp-579463,Cu2Pb(SeO3)3,0.95,0.701,0.6659499999999999,0.9262595176696776,0.2694,MP_synthesized,False
+Radiation Shielding,score_radiation_shielding,8ea3fe4fd9,Cu5PbF18,0.95,0.694,0.6592999999999999,0.8539105653762817,,Experimental,True
+Radiation Shielding,score_radiation_shielding,e665e6d6fe,Cu4AgPbO8,0.95,0.694,0.6592999999999999,0.9500585198402404,0.0143,Experimental,True
+Radiation Shielding,score_radiation_shielding,mp-1193833,Cu2PbSe2(ClO3)2,0.95,0.694,0.6592999999999999,0.9048976302146912,0.0,MP_synthesized,False
+Radiation Shielding,score_radiation_shielding,mp-1201833,Fe6Pb(SO7)4,0.95,0.694,0.6592999999999999,0.9587851762771606,0.0,MP_synthesized,False
+Nuclear Waste Immobilisation,score_nuclear_waste_immobilisation,5483a75ad9,CaY(CuO2)4,0.9,0.565,0.5085,0.9479715824127196,0.0015,Experimental,True
+Nuclear Waste Immobilisation,score_nuclear_waste_immobilisation,2bb0193608,CaY(FeO3)2,0.9,0.552,0.4968000000000001,0.5556325316429138,0.0037,Experimental,True
+Nuclear Waste Immobilisation,score_nuclear_waste_immobilisation,4f733aebb1,Ca3La(FeO3)4,0.9,0.552,0.4968000000000001,0.6682925820350647,0.0067,Experimental,True
+Nuclear Waste Immobilisation,score_nuclear_waste_immobilisation,mp-555155,KNa2Y(Si2O5)3,0.9,0.552,0.4968000000000001,0.93422132730484,4.9016,MP_synthesized,False
+Nuclear Waste Immobilisation,score_nuclear_waste_immobilisation,d51d22b313,NaLa(Si3O7)2,0.9,0.546,0.49140000000000006,0.9175477027893066,,Experimental,True
+Nuclear Waste Immobilisation,score_nuclear_waste_immobilisation,mp-14977,Na3Y(Si2O5)3,0.9,0.544,0.48960000000000004,0.9149240851402284,4.8323,MP_synthesized,False
+Nuclear Waste Immobilisation,score_nuclear_waste_immobilisation,mp-1198649,K9Y3Si12(O16F)2,0.9,0.542,0.48780000000000007,0.9035428166389464,4.995,MP_synthesized,False
+Nuclear Waste Immobilisation,score_nuclear_waste_immobilisation,075fb698b9,K2Rb7Y3Si12(O16F)2,0.9,0.541,0.48690000000000005,0.9043127298355104,,Experimental,True
+Nuclear Waste Immobilisation,score_nuclear_waste_immobilisation,mp-720719,Ca2Y2Si4H2CO16,0.9,0.54,0.48600000000000004,0.7920108437538147,5.429,MP_synthesized,False
+Nuclear Waste Immobilisation,score_nuclear_waste_immobilisation,mp-557649,K2Ce(Si2O5)3,0.9,0.54,0.48600000000000004,0.9654930233955384,2.187,MP_synthesized,False
+Battery Separator,score_battery_separator,mp-27949,Si2H6O,0.85,0.766,0.6511,0.9625323414802552,5.2626,MP_synthesized,False
+Battery Separator,score_battery_separator,mp-20313,Fe2SiO4,0.85,0.765,0.65025,0.967015027999878,3.6769,MP_synthesized,False
+Battery Separator,score_battery_separator,mp-2245,Si3N4,0.85,0.744,0.6324,0.98034006357193,5.1,MP_synthesized,False
+Battery Separator,score_battery_separator,mp-568867,Si3N4,0.85,0.744,0.6324,0.9502456188201904,5.1,MP_synthesized,False
+Battery Separator,score_battery_separator,mp-583712,Si3N4,0.85,0.744,0.6324,0.9799315333366394,5.1,MP_synthesized,False
+Battery Separator,score_battery_separator,mp-988,Si3N4,0.85,0.744,0.6324,0.9831224083900452,5.1,MP_synthesized,False
+Battery Separator,score_battery_separator,mp-4497,Si2N2O,0.85,0.737,0.62645,0.971843719482422,4.924799999999999,MP_synthesized,False
+Battery Separator,score_battery_separator,mp-28289,SiH3F,0.85,0.737,0.62645,0.9347416162490844,9.221,MP_synthesized,False
+Battery Separator,score_battery_separator,mp-19333,Fe2B2O5,0.85,0.735,0.62475,0.9018172025680542,3.2492,MP_synthesized,False
+Battery Separator,score_battery_separator,mp-636960,Fe4P2O9,0.85,0.735,0.62475,0.934484362602234,3.1713,MP_synthesized,False
+Liquid Battery Electrolyte Component,score_liquid_battery_electrolyte_component,mp-5004,Na2B2Se7,0.8,0.735,0.588,0.9246336221694946,2.68,MP_synthesized,False
+Liquid Battery Electrolyte Component,score_liquid_battery_electrolyte_component,mp-18625,KPSe6,0.8,0.732,0.5856,0.9938884377479552,2.16,MP_synthesized,False
+Liquid Battery Electrolyte Component,score_liquid_battery_electrolyte_component,mp-542637,K2B2Se7,0.8,0.73,0.584,0.9573264122009276,2.664,MP_synthesized,False
+Liquid Battery Electrolyte Component,score_liquid_battery_electrolyte_component,mp-31229,Na4(BSe)9,0.8,0.723,0.5784,0.8808442950248718,2.2096,MP_synthesized,False
+Liquid Battery Electrolyte Component,score_liquid_battery_electrolyte_component,mp-569702,KPSe3,0.8,0.722,0.5776,0.9979405999183656,2.08,MP_synthesized,False
+Liquid Battery Electrolyte Component,score_liquid_battery_electrolyte_component,mp-571452,KPSe3,0.8,0.722,0.5776,0.9919449687004088,2.08,MP_synthesized,False
+Liquid Battery Electrolyte Component,score_liquid_battery_electrolyte_component,mp-735586,KFe2H(SeO3)4,0.8,0.721,0.5768,0.9192997217178344,2.3115,MP_synthesized,False
+Liquid Battery Electrolyte Component,score_liquid_battery_electrolyte_component,mp-880385,NaFe(SeO3)2,0.8,0.721,0.5768,0.8129532933235168,2.278299999999999,MP_synthesized,False
+Liquid Battery Electrolyte Component,score_liquid_battery_electrolyte_component,mp-559464,KFeO2,0.8,0.72,0.576,0.8065010905265808,2.1388,MP_synthesized,False
+Liquid Battery Electrolyte Component,score_liquid_battery_electrolyte_component,mp-1078419,Na3PSe4,0.8,0.72,0.576,0.8374053835868835,2.293,MP_synthesized,False
+Solar Thermal Absorber,score_solar_thermal_absorber,mp-18905,FeO,0.9,0.783,0.7047,0.9425278306007384,0.0,MP_synthesized,False
+Solar Thermal Absorber,score_solar_thermal_absorber,mp-1188678,Fe4O5,0.9,0.776,0.6984,0.9525421261787416,0.0,MP_synthesized,False
+Solar Thermal Absorber,score_solar_thermal_absorber,mp-18731,Fe3O4,0.9,0.773,0.6957,0.9521861672401428,0.7548,MP_synthesized,False
+Solar Thermal Absorber,score_solar_thermal_absorber,mp-19306,Fe3O4,0.9,0.773,0.6957,0.7054262757301331,0.0,MP_synthesized,False
+Solar Thermal Absorber,score_solar_thermal_absorber,mp-31770,Fe3O4,0.9,0.773,0.6957,0.563198447227478,0.0,MP_synthesized,False
+Solar Thermal Absorber,score_solar_thermal_absorber,mp-505595,Fe3O4,0.9,0.773,0.6957,0.6656357645988464,0.4689,MP_synthesized,False
+Solar Thermal Absorber,score_solar_thermal_absorber,mp-510252,Fe3O4,0.9,0.773,0.6957,0.8186781406402588,0.2435,MP_synthesized,False
+Solar Thermal Absorber,score_solar_thermal_absorber,mp-611817,Fe3O4,0.9,0.773,0.6957,0.9930312633514404,0.0,MP_synthesized,False
+Solar Thermal Absorber,score_solar_thermal_absorber,mp-22635,Fe7SiO10,0.9,0.772,0.6948000000000001,0.9165456295013428,0.0,MP_synthesized,False
+Solar Thermal Absorber,score_solar_thermal_absorber,mp-505110,FeCuO2,0.9,0.772,0.6948000000000001,0.9085819125175476,0.0,MP_synthesized,False
+Anti-Reflection Coating,score_anti_reflection_coating,mp-20313,Fe2SiO4,0.8,0.765,0.6120000000000001,0.967015027999878,3.6769,MP_synthesized,False
+Anti-Reflection Coating,score_anti_reflection_coating,mp-2245,Si3N4,0.8,0.744,0.5952000000000001,0.98034006357193,5.1,MP_synthesized,False
+Anti-Reflection Coating,score_anti_reflection_coating,mp-988,Si3N4,0.8,0.744,0.5952000000000001,0.9831224083900452,5.1,MP_synthesized,False
+Anti-Reflection Coating,score_anti_reflection_coating,mp-4497,Si2N2O,0.8,0.737,0.5896,0.971843719482422,4.924799999999999,MP_synthesized,False
+Anti-Reflection Coating,score_anti_reflection_coating,mp-28289,SiH3F,0.8,0.737,0.5896,0.9347416162490844,9.221,MP_synthesized,False
+Anti-Reflection Coating,score_anti_reflection_coating,mp-19333,Fe2B2O5,0.8,0.735,0.588,0.9018172025680542,3.2492,MP_synthesized,False
+Anti-Reflection Coating,score_anti_reflection_coating,mp-636960,Fe4P2O9,0.8,0.735,0.588,0.934484362602234,3.1713,MP_synthesized,False
+Anti-Reflection Coating,score_anti_reflection_coating,aac9576e23,Fe3Cl4O,0.8,0.734,0.5872,0.9819813370704652,inf,Experimental,True
+Anti-Reflection Coating,score_anti_reflection_coating,edf59f6b0c,Fe2SeCl2O3,0.8,0.733,0.5864,0.9635761976242064,3.2968,Experimental,True
+Anti-Reflection Coating,score_anti_reflection_coating,mp-1199781,Si2H2O3,0.8,0.732,0.5856,0.9241604208946228,6.7877,MP_synthesized,False
+Selective Hydrogenation Catalyst,score_selective_hydrogenation_catalyst,mp-505110,FeCuO2,0.85,0.772,0.6562,0.9085819125175476,0.0,MP_synthesized,False
+Selective Hydrogenation Catalyst,score_selective_hydrogenation_catalyst,mp-510281,FeCuO2,0.85,0.772,0.6562,0.8968990445137024,0.0,MP_synthesized,False
+Selective Hydrogenation Catalyst,score_selective_hydrogenation_catalyst,mp-1478,Cu4O3,0.85,0.768,0.6528,0.8532524108886719,0.0,MP_synthesized,False
+Selective Hydrogenation Catalyst,score_selective_hydrogenation_catalyst,8f09a7b742,Ca6Cu16N,0.85,0.762,0.6476999999999999,0.6597292423248291,0.0265,Experimental,True
+Selective Hydrogenation Catalyst,score_selective_hydrogenation_catalyst,mp-14549,CuO,0.85,0.762,0.6476999999999999,0.8371833562850952,0.0,MP_synthesized,False
+Selective Hydrogenation Catalyst,score_selective_hydrogenation_catalyst,mp-704645,CuO,0.85,0.762,0.6476999999999999,0.8373941779136658,0.0,MP_synthesized,False
+Selective Hydrogenation Catalyst,score_selective_hydrogenation_catalyst,10666bfd18,Cu7O8,0.85,0.758,0.6443,0.8435115814208984,0.0073,Experimental,True
+Selective Hydrogenation Catalyst,score_selective_hydrogenation_catalyst,mp-624299,Cu7S4,0.85,0.758,0.6443,0.7334826588630676,0.0,MP_synthesized,False
+Selective Hydrogenation Catalyst,score_selective_hydrogenation_catalyst,mp-5756,Cu3PSe4,0.85,0.757,0.64345,0.8814440965652466,0.0,MP_synthesized,False
+Selective Hydrogenation Catalyst,score_selective_hydrogenation_catalyst,421c5ff495,KCu4PSe2,0.85,0.755,0.6417499999999999,0.7847832441329956,0.0092,Experimental,True
+Fischer-Tropsch Catalyst,score_fischer_tropsch_catalyst,68b6a98183,Fe5Si3H,0.9,0.822,0.7398,0.9529443383216858,0.0002,Experimental,True
+Fischer-Tropsch Catalyst,score_fischer_tropsch_catalyst,mp-22635,Fe7SiO10,0.9,0.772,0.6948000000000001,0.9165456295013428,0.0,MP_synthesized,False
+Fischer-Tropsch Catalyst,score_fischer_tropsch_catalyst,mp-505110,FeCuO2,0.9,0.772,0.6948000000000001,0.9085819125175476,0.0,MP_synthesized,False
+Fischer-Tropsch Catalyst,score_fischer_tropsch_catalyst,mp-510281,FeCuO2,0.9,0.772,0.6948000000000001,0.8968990445137024,0.0,MP_synthesized,False
+Fischer-Tropsch Catalyst,score_fischer_tropsch_catalyst,mp-1103684,Fe2SiO4,0.9,0.765,0.6885,0.8830101490020752,0.9995,MP_synthesized,False
+Fischer-Tropsch Catalyst,score_fischer_tropsch_catalyst,d5928a4f76,Al2Fe6H,0.9,0.757,0.6813,0.7853632569313049,0.0025,Experimental,True
+Fischer-Tropsch Catalyst,score_fischer_tropsch_catalyst,93f5694f84,Al4(Fe4H)3,0.9,0.756,0.6804,0.73790442943573,0.0022,Experimental,True
+Fischer-Tropsch Catalyst,score_fischer_tropsch_catalyst,mp-28444,Fe3(SiO4)2,0.9,0.755,0.6795,0.9699947834014891,1.484499999999999,MP_synthesized,False
+Fischer-Tropsch Catalyst,score_fischer_tropsch_catalyst,mp-1199561,FeSiO3,0.9,0.755,0.6795,0.9554097056388856,0.7031000000000001,MP_synthesized,False
+Fischer-Tropsch Catalyst,score_fischer_tropsch_catalyst,mp-18269,FeSiO3,0.9,0.755,0.6795,0.9508218765258788,1.452199999999999,MP_synthesized,False
+Dehydrogenation / LOHC Catalyst,score_dehydrogenation_lohc_catalyst,mp-1189032,Fe3S,0.85,0.794,0.6749,0.9300971031188964,0.0,MP_synthesized,False
+Dehydrogenation / LOHC Catalyst,score_dehydrogenation_lohc_catalyst,mp-6988,FeN,0.85,0.787,0.66895,0.6087753176689148,0.0,MP_synthesized,False
+Dehydrogenation / LOHC Catalyst,score_dehydrogenation_lohc_catalyst,mp-18905,FeO,0.85,0.783,0.66555,0.9425278306007384,0.0,MP_synthesized,False
+Dehydrogenation / LOHC Catalyst,score_dehydrogenation_lohc_catalyst,mp-1188678,Fe4O5,0.85,0.776,0.6596,0.9525421261787416,0.0,MP_synthesized,False
+Dehydrogenation / LOHC Catalyst,score_dehydrogenation_lohc_catalyst,8faa33925b,Fe4Se3S,0.85,0.775,0.65875,0.967870831489563,0.0077,Experimental,True
+Dehydrogenation / LOHC Catalyst,score_dehydrogenation_lohc_catalyst,mp-18731,Fe3O4,0.85,0.773,0.65705,0.9521861672401428,0.7548,MP_synthesized,False
+Dehydrogenation / LOHC Catalyst,score_dehydrogenation_lohc_catalyst,mp-19306,Fe3O4,0.85,0.773,0.65705,0.7054262757301331,0.0,MP_synthesized,False
+Dehydrogenation / LOHC Catalyst,score_dehydrogenation_lohc_catalyst,mp-31770,Fe3O4,0.85,0.773,0.65705,0.563198447227478,0.0,MP_synthesized,False
+Dehydrogenation / LOHC Catalyst,score_dehydrogenation_lohc_catalyst,mp-505595,Fe3O4,0.85,0.773,0.65705,0.6656357645988464,0.4689,MP_synthesized,False
+Dehydrogenation / LOHC Catalyst,score_dehydrogenation_lohc_catalyst,mp-510252,Fe3O4,0.85,0.773,0.65705,0.8186781406402588,0.2435,MP_synthesized,False
+Memristor / Neuromorphic Computing Material,score_memristor_neuromorphic,mp-16053,CuSiO3,0.95,0.744,0.7068,0.9697493314743042,0.112,MP_synthesized,False
+Memristor / Neuromorphic Computing Material,score_memristor_neuromorphic,mp-578931,Cu2SeO4,0.95,0.743,0.70585,0.8121532797813416,0.3242,MP_synthesized,False
+Memristor / Neuromorphic Computing Material,score_memristor_neuromorphic,mp-1204253,Cu4Se3O10,0.95,0.738,0.7011,0.8851044774055481,0.1667,MP_synthesized,False
+Memristor / Neuromorphic Computing Material,score_memristor_neuromorphic,mp-10914,K3Cu5O4,0.95,0.737,0.7001499999999999,0.9109367728233336,1.593499999999999,MP_synthesized,False
+Memristor / Neuromorphic Computing Material,score_memristor_neuromorphic,mp-573024,Na2Cu5(Si2O7)2,0.95,0.737,0.7001499999999999,0.9326688051223756,0.458499999999999,MP_synthesized,False
+Memristor / Neuromorphic Computing Material,score_memristor_neuromorphic,mp-643793,Cu3H2(OF2)2,0.95,0.736,0.6991999999999999,0.8855445981025696,0.3217,MP_synthesized,False
+Memristor / Neuromorphic Computing Material,score_memristor_neuromorphic,mp-558202,Fe2Cu3(SeO3)6,0.95,0.734,0.6972999999999999,0.9167346358299256,0.2582,MP_synthesized,False
+Memristor / Neuromorphic Computing Material,score_memristor_neuromorphic,mp-558486,Fe2Cu3(SeO3)6,0.95,0.734,0.6972999999999999,0.9054005146026612,0.209099999999999,MP_synthesized,False
+Memristor / Neuromorphic Computing Material,score_memristor_neuromorphic,mp-23731,CuSi(HO2)2,0.95,0.732,0.6953999999999999,0.9416638612747192,0.221899999999999,MP_synthesized,False
+Memristor / Neuromorphic Computing Material,score_memristor_neuromorphic,mp-734045,Cu2H2Se2O7,0.95,0.73,0.6935,0.9212252497673036,0.311899999999999,MP_synthesized,False
+2D Material,score_material_2d,mp-1188610,Fe5Si2B,0.9,0.817,0.7353,0.9546083211898804,0.0,MP_synthesized,False
+2D Material,score_material_2d,mp-1181327,Fe3B,0.9,0.813,0.7317,0.8252549767494202,0.0,MP_synthesized,False
+2D Material,score_material_2d,mp-973682,Fe3B,0.9,0.813,0.7317,0.9424456357955932,0.0,MP_synthesized,False
+2D Material,score_material_2d,mp-1105372,Fe5SiB2,0.9,0.811,0.7299000000000001,0.9903822541236876,0.0,MP_synthesized,False
+2D Material,score_material_2d,mp-1915,Fe2B,0.9,0.808,0.7272000000000001,0.9464633464813232,0.0,MP_synthesized,False
+2D Material,score_material_2d,fa1c490746,Fe10SiB4P,0.9,0.803,0.7227,0.9882189035415648,0.0036,Experimental,True
+2D Material,score_material_2d,8f09a9a806,Fe21(B3Mo)2,0.9,0.796,0.7164,0.9326494932174684,0.0018,Experimental,True
+2D Material,score_material_2d,mp-9913,Fe5B2P,0.9,0.795,0.7155,0.9847395420074464,0.0,MP_synthesized,False
+2D Material,score_material_2d,mp-1189032,Fe3S,0.9,0.794,0.7146,0.9300971031188964,0.0,MP_synthesized,False
+2D Material,score_material_2d,mp-1007881,FeB,0.9,0.794,0.7146,0.9981833100318908,0.0,MP_synthesized,False
+Optical Fibre / Waveguide Material,score_optical_fibre_waveguide,mp-2245,Si3N4,0.9,0.744,0.6696,0.98034006357193,5.1,MP_synthesized,False
+Optical Fibre / Waveguide Material,score_optical_fibre_waveguide,mp-988,Si3N4,0.9,0.744,0.6696,0.9831224083900452,5.1,MP_synthesized,False
+Optical Fibre / Waveguide Material,score_optical_fibre_waveguide,mp-4497,Si2N2O,0.9,0.737,0.6633,0.971843719482422,4.924799999999999,MP_synthesized,False
+Optical Fibre / Waveguide Material,score_optical_fibre_waveguide,mp-28289,SiH3F,0.9,0.737,0.6633,0.9347416162490844,9.221,MP_synthesized,False
+Optical Fibre / Waveguide Material,score_optical_fibre_waveguide,mp-1199781,Si2H2O3,0.9,0.732,0.6588,0.9241604208946228,6.7877,MP_synthesized,False
+Optical Fibre / Waveguide Material,score_optical_fibre_waveguide,mp-24431,Si2H2O3,0.9,0.732,0.6588,0.9056344032287598,6.372199999999999,MP_synthesized,False
+Optical Fibre / Waveguide Material,score_optical_fibre_waveguide,mp-1071820,SiO2,0.9,0.721,0.6489,0.9463393092155457,4.716,MP_synthesized,False
+Optical Fibre / Waveguide Material,score_optical_fibre_waveguide,mp-10851,SiO2,0.9,0.721,0.6489,0.8309656977653503,5.5318000000000005,MP_synthesized,False
+Optical Fibre / Waveguide Material,score_optical_fibre_waveguide,mp-10948,SiO2,0.9,0.721,0.6489,0.7151705622673035,5.2394,MP_synthesized,False
+Optical Fibre / Waveguide Material,score_optical_fibre_waveguide,mp-11684,SiO2,0.9,0.721,0.6489,0.9751230478286744,5.5458,MP_synthesized,False
+Lightweight Structural Material,score_lightweight_structural,6c79028f5a,Al5Fe8SiB4,0.85,0.76,0.646,0.7467769980430603,0.0047,Experimental,True
+Lightweight Structural Material,score_lightweight_structural,30320976e6,Be2Fe8SiB4P,0.85,0.754,0.6409,0.9938064813613892,0.0008,Experimental,True
+Lightweight Structural Material,score_lightweight_structural,d82607d1e6,BeFe4SiB2,0.85,0.753,0.64005,0.9941450953483582,0.0006,Experimental,True
+Lightweight Structural Material,score_lightweight_structural,59d0ad9e42,Mn10SiB4P,0.85,0.747,0.63495,0.8328810334205627,0.001,Experimental,True
+Lightweight Structural Material,score_lightweight_structural,mp-2245,Si3N4,0.85,0.744,0.6324,0.98034006357193,5.1,MP_synthesized,False
+Lightweight Structural Material,score_lightweight_structural,mp-568867,Si3N4,0.85,0.744,0.6324,0.9502456188201904,5.1,MP_synthesized,False
+Lightweight Structural Material,score_lightweight_structural,mp-583712,Si3N4,0.85,0.744,0.6324,0.9799315333366394,5.1,MP_synthesized,False
+Lightweight Structural Material,score_lightweight_structural,mp-988,Si3N4,0.85,0.744,0.6324,0.9831224083900452,5.1,MP_synthesized,False
+Lightweight Structural Material,score_lightweight_structural,mp-1199200,Fe2CO5,0.85,0.74,0.629,0.8896169066429138,1.414899999999999,MP_synthesized,False
+Lightweight Structural Material,score_lightweight_structural,mp-1080623,Si2N3,0.85,0.74,0.629,0.9845272302627563,0.0,MP_synthesized,False
+Shape Memory Alloy (SMA),score_shape_memory_alloy,3b44a35ed5,Ti6Fe9NiB4,0.9,0.699,0.6291,0.954319715499878,0.0006,Experimental,True
+Shape Memory Alloy (SMA),score_shape_memory_alloy,a52ff684a8,Ti3Fe4NiB2,0.9,0.696,0.6264,0.934583842754364,0.0024,Experimental,True
+Shape Memory Alloy (SMA),score_shape_memory_alloy,a3b1f7399b,Ti12Zn8Cu3NiN4,0.9,0.671,0.6039000000000001,0.658242404460907,0.0042,Experimental,True
+Shape Memory Alloy (SMA),score_shape_memory_alloy,c329691f02,Ti4Fe3NiP4,0.9,0.662,0.5958,0.5477030277252197,0.0026,Experimental,True
+Shape Memory Alloy (SMA),score_shape_memory_alloy,295b56aa77,Ti12Al3Si5(NiC)4,0.9,0.661,0.5949000000000001,0.5662442445755005,0.0058,Experimental,True
+Shape Memory Alloy (SMA),score_shape_memory_alloy,090900e516,Ti12Al3Si5(NiN)4,0.9,0.66,0.5940000000000001,0.586470365524292,0.0037,Experimental,True
+Shape Memory Alloy (SMA),score_shape_memory_alloy,6f98e40faf,Ti12AlSi7(NiN)4,0.9,0.66,0.5940000000000001,0.6117259860038757,0.002,Experimental,True
+Shape Memory Alloy (SMA),score_shape_memory_alloy,70b81fb363,Ti2FeNiP2,0.9,0.657,0.5913,0.5489194393157959,0.0135,Experimental,True
+Shape Memory Alloy (SMA),score_shape_memory_alloy,5d08860b69,Ti6Mn5Si12Ni,0.9,0.654,0.5886,0.6879549622535706,0.0003,Experimental,True
+Shape Memory Alloy (SMA),score_shape_memory_alloy,8ad998be1a,Ti2Cu3Ni,0.9,0.654,0.5886,0.6167823076248169,0.0154,Experimental,True
+Metallic Glass / Amorphous Metal,score_metallic_glass,68b6a98183,Fe5Si3H,0.85,0.822,0.6987,0.9529443383216858,0.0002,Experimental,True
+Metallic Glass / Amorphous Metal,score_metallic_glass,mp-1188610,Fe5Si2B,0.85,0.817,0.6944499999999999,0.9546083211898804,0.0,MP_synthesized,False
+Metallic Glass / Amorphous Metal,score_metallic_glass,mp-1105372,Fe5SiB2,0.85,0.811,0.68935,0.9903822541236876,0.0,MP_synthesized,False
+Metallic Glass / Amorphous Metal,score_metallic_glass,c27c020e39,Fe6Si2P,0.85,0.81,0.6885,0.9570402503013612,0.0014,Experimental,True
+Metallic Glass / Amorphous Metal,score_metallic_glass,fa1c490746,Fe10SiB4P,0.85,0.803,0.68255,0.9882189035415648,0.0036,Experimental,True
+Metallic Glass / Amorphous Metal,score_metallic_glass,8f09a9a806,Fe21(B3Mo)2,0.85,0.796,0.6766,0.9326494932174684,0.0018,Experimental,True
+Metallic Glass / Amorphous Metal,score_metallic_glass,mp-9913,Fe5B2P,0.85,0.795,0.67575,0.9847395420074464,0.0,MP_synthesized,False
+Metallic Glass / Amorphous Metal,score_metallic_glass,8e7e589f85,Cu30Si7P,0.85,0.793,0.67405,0.8828926086425781,0.0042,Experimental,True
+Metallic Glass / Amorphous Metal,score_metallic_glass,0cd77e2170,NaCa(Cu9Si4)2,0.85,0.79,0.6715,0.707557737827301,0.011,Experimental,True
+Metallic Glass / Amorphous Metal,score_metallic_glass,2969f533db,KCu9Si4,0.85,0.788,0.6698000000000001,0.6564587950706482,0.006,Experimental,True
+Superalloy,score_superalloy,6c79028f5a,Al5Fe8SiB4,0.9,0.76,0.684,0.7467769980430603,0.0047,Experimental,True
+Superalloy,score_superalloy,60f4224d76,Ti5Fe11B4,0.9,0.738,0.6642,0.9716992974281312,0.0005,Experimental,True
+Superalloy,score_superalloy,mp-3805,Al(FeB)2,0.9,0.731,0.6579,0.8993673324584961,0.0,MP_synthesized,False
+Superalloy,score_superalloy,027a88a767,Nb6Fe16Si7C,0.9,0.72,0.648,0.9743088483810424,0.0016,Experimental,True
+Superalloy,score_superalloy,f7d9b0ee4d,Fe2BMoO5,0.9,0.72,0.648,0.8648303747177124,2.583,Experimental,True
+Superalloy,score_superalloy,2079ddb779,Fe5Si7(BMo6)2,0.9,0.717,0.6453,0.7165882587432861,0.0026,Experimental,True
+Superalloy,score_superalloy,deaf31bb07,Ti2Fe3B3Mo,0.9,0.712,0.6408,0.9211795926094056,0.0084,Experimental,True
+Superalloy,score_superalloy,201dd5e30f,Nb2Fe5SiB2,0.9,0.71,0.639,0.9864945411682128,0.0014,Experimental,True
+Superalloy,score_superalloy,7747f458d7,CrFe11(BO5)4,0.9,0.707,0.6363,0.9556346535682678,1.2001,Experimental,True
+Superalloy,score_superalloy,bab7675e0f,CrFe5(BO5)2,0.9,0.705,0.6345,0.9476639032363892,1.3687,Experimental,True
+Hydrogen Embrittlement Resistant Steel,score_hydrogen_embrittlement_resistant_steel,mp-19800,Fe11Si5,0.85,0.823,0.6995499999999999,0.9425226449966432,0.0,MP_synthesized,False
+Hydrogen Embrittlement Resistant Steel,score_hydrogen_embrittlement_resistant_steel,mp-22787,Fe2Si,0.85,0.823,0.6995499999999999,0.9391635656356812,0.0,MP_synthesized,False
+Hydrogen Embrittlement Resistant Steel,score_hydrogen_embrittlement_resistant_steel,mp-2199,Fe3Si,0.85,0.823,0.6995499999999999,0.9462729692459106,0.0,MP_synthesized,False
+Hydrogen Embrittlement Resistant Steel,score_hydrogen_embrittlement_resistant_steel,mp-449,Fe5Si3,0.85,0.823,0.6995499999999999,0.9463542699813844,0.0,MP_synthesized,False
+Hydrogen Embrittlement Resistant Steel,score_hydrogen_embrittlement_resistant_steel,mp-871,FeSi,0.85,0.821,0.69785,0.8853039145469666,0.068,MP_synthesized,False
+Hydrogen Embrittlement Resistant Steel,score_hydrogen_embrittlement_resistant_steel,mp-20738,FeSi2,0.85,0.82,0.697,0.7904812097549438,0.9,MP_synthesized,False
+Hydrogen Embrittlement Resistant Steel,score_hydrogen_embrittlement_resistant_steel,mp-1188610,Fe5Si2B,0.85,0.817,0.6944499999999999,0.9546083211898804,0.0,MP_synthesized,False
+Hydrogen Embrittlement Resistant Steel,score_hydrogen_embrittlement_resistant_steel,mp-1105372,Fe5SiB2,0.85,0.811,0.68935,0.9903822541236876,0.0,MP_synthesized,False
+Hydrogen Embrittlement Resistant Steel,score_hydrogen_embrittlement_resistant_steel,c27c020e39,Fe6Si2P,0.85,0.81,0.6885,0.9570402503013612,0.0014,Experimental,True
+Hydrogen Embrittlement Resistant Steel,score_hydrogen_embrittlement_resistant_steel,fa1c490746,Fe10SiB4P,0.85,0.803,0.68255,0.9882189035415648,0.0036,Experimental,True
+Photocatalytic CO2 Reduction,score_photocatalytic_co2_reduction,mp-10914,K3Cu5O4,1.0,0.737,0.737,0.9109367728233336,1.593499999999999,MP_synthesized,False
+Photocatalytic CO2 Reduction,score_photocatalytic_co2_reduction,mp-28491,Cu2SO4,1.0,0.726,0.726,0.967805802822113,1.632,MP_synthesized,False
+Photocatalytic CO2 Reduction,score_photocatalytic_co2_reduction,mp-866635,CuH3NCl,1.0,0.723,0.723,0.9470205903053284,2.1259,MP_synthesized,False
+Photocatalytic CO2 Reduction,score_photocatalytic_co2_reduction,mp-1103519,KCuO,1.0,0.721,0.721,0.7883223295211792,1.782,MP_synthesized,False
+Photocatalytic CO2 Reduction,score_photocatalytic_co2_reduction,mp-7911,KCuO,1.0,0.721,0.721,0.7867761850357056,1.782,MP_synthesized,False
+Photocatalytic CO2 Reduction,score_photocatalytic_co2_reduction,mp-13900,Sr(CuO)2,1.0,0.717,0.717,0.9489805698394777,1.815999999999999,MP_synthesized,False
+Photocatalytic CO2 Reduction,score_photocatalytic_co2_reduction,mp-562090,CuCClO,1.0,0.715,0.715,0.5731393694877625,2.752,MP_synthesized,False
+Photocatalytic CO2 Reduction,score_photocatalytic_co2_reduction,mp-8198,Rb3Cu5O4,1.0,0.715,0.715,0.9096194505691528,1.580299999999999,MP_synthesized,False
+Photocatalytic CO2 Reduction,score_photocatalytic_co2_reduction,mp-28270,KCuS,1.0,0.711,0.711,0.9875149726867676,1.8615,MP_synthesized,False
+Photocatalytic CO2 Reduction,score_photocatalytic_co2_reduction,mp-558998,K2Cu(Si2O5)2,1.0,0.71,0.71,0.9413989782333374,2.686699999999999,MP_synthesized,False
+VOC Decomposition Catalyst,score_voc_decomposition_catalyst,mp-1078361,Fe2O3,0.9,0.768,0.6912,0.9682540893554688,2.2,MP_synthesized,False
+VOC Decomposition Catalyst,score_voc_decomposition_catalyst,mp-1456,Fe2O3,0.9,0.768,0.6912,0.7802080512046814,2.2,MP_synthesized,False
+VOC Decomposition Catalyst,score_voc_decomposition_catalyst,mp-19770,Fe2O3,0.9,0.768,0.6912,0.9818907380104064,2.2,MP_synthesized,False
+VOC Decomposition Catalyst,score_voc_decomposition_catalyst,mp-510080,Fe2O3,0.9,0.768,0.6912,0.993530809879303,2.2,MP_synthesized,False
+VOC Decomposition Catalyst,score_voc_decomposition_catalyst,mp-542896,Fe2O3,0.9,0.768,0.6912,0.9099158644676208,2.2,MP_synthesized,False
+VOC Decomposition Catalyst,score_voc_decomposition_catalyst,mp-557546,Fe2O3,0.9,0.768,0.6912,0.9557393193244934,2.2,MP_synthesized,False
+VOC Decomposition Catalyst,score_voc_decomposition_catalyst,mp-565814,Fe2O3,0.9,0.768,0.6912,0.9708080887794496,2.2,MP_synthesized,False
+VOC Decomposition Catalyst,score_voc_decomposition_catalyst,mp-18816,Fe2SiO4,0.9,0.765,0.6885,0.744098961353302,2.7099,MP_synthesized,False
+VOC Decomposition Catalyst,score_voc_decomposition_catalyst,mp-27492,CaFe5O7,0.9,0.759,0.6831,0.9654724597930908,1.247499999999999,MP_synthesized,False
+VOC Decomposition Catalyst,score_voc_decomposition_catalyst,mp-555755,Fe5(SiO4)3,0.9,0.758,0.6822,0.8711500763893127,2.4392,MP_synthesized,False
