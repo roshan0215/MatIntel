@@ -99,8 +99,14 @@ MatIntel expects the following columns from source datasets. Optional columns im
 | `Thermal Conductivity` | float (W/m·K) | JARVIS, Phono3py | Thermoelectric, TBC, TIM |
 | `Dimensionality` | string | GNoME Cheon | 2D material scorer |
 | `Is Train` | bool | GNoME | Provenance tracking |
-| `source` | string | Pipeline | `MP_synthesized`, `Experimental`, `JARVIS_ICSD` |
-| `is_experimental` | bool | Pipeline | Never synthesised flag |
+| `source` | string | Pipeline | Raw origin label (`MP_synthesized`, `Experimental`, `JARVIS_ICSD`) |
+| `is_experimental` | bool | Pipeline | **True = Experimental (NOT already synthesized); False = Synthesized (already synthesized/known)** |
+
+### Provenance Semantics (Important)
+
+- `Experimental` means the candidate is **not already present in synthesized reference datasets** and is treated as a novel/unsynthesized prediction.
+- `Synthesized` means the material is **already reported as synthesized** in curated reference datasets (for example Materials Project / ICSD-linked sources).
+- In short: `Experimental != Synthesized`.
 
 ### Schema Normalisation
 
@@ -2490,8 +2496,8 @@ From the Streamlit dashboard:
 | `data/processed/scored_dataset.csv` | + 56 score columns, viability, CLscore, best_score |
 | `data/processed/clscore_all_results.csv` | CLscore cache (resumable) |
 | `data/processed/experimental_compounds.csv` | MP/JARVIS experimental reference set |
-| `data/processed/top10_per_category.csv` | Top 10 per app (viability-adjusted) |
-| `data/processed/top10_per_category_raw_score.csv` | Top 10 per app (raw score) |
+| `data/processed/top10_per_category.csv` | Top 10 per app (viability-adjusted) with explicit provenance columns |
+| `data/processed/top10_per_category_raw_score.csv` | Top 10 per app (raw score) with explicit provenance columns |
 | `logs/pipeline.log` | Timestamped execution log |
 
 ---

@@ -600,6 +600,11 @@ def app() -> None:
     min_supply = st.sidebar.slider("Min supply score", 0.0, 1.0, 0.20, 0.01)
     min_clscore = st.sidebar.slider("Min CLscore", 0.0, 1.0, 0.0, 0.1)
     provenance_choice = st.sidebar.selectbox("Compound provenance", ["All", "Experimental", "Synthesized"])
+    show_unique_formulas = st.sidebar.checkbox(
+        "Unique formulas only",
+        value=True,
+        help="Show only the top-ranked entry per reduced formula to avoid repeated polymorph entries.",
+    )
 
     filtered = df[
         (df[score_col] >= min_app_score)
@@ -622,16 +627,20 @@ def app() -> None:
         filtered["clscore"] = -1.0
 
     filtered = filtered.sort_values(by=[score_col, "viability"], ascending=False)
+    if show_unique_formulas and "Reduced Formula" in filtered.columns:
+        display_df = filtered.drop_duplicates(subset=["Reduced Formula"], keep="first").copy()
+    else:
+        display_df = filtered
 
     c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Materials", f"{len(filtered):,}")
-    c2.metric("Mean app score", format_float(filtered[score_col].mean() if len(filtered) else 0, 2))
-    c3.metric("Mean viability", format_float(filtered["viability"].mean() if len(filtered) else 0, 2))
-    c4.metric("Top candidate", str(filtered.iloc[0]["Reduced Formula"]) if len(filtered) else "N/A")
+    c1.metric("Entries", f"{len(filtered):,}")
+    c2.metric("Displayed", f"{len(display_df):,}")
+    c3.metric("Mean app score", format_float(display_df[score_col].mean() if len(display_df) else 0, 2))
+    c4.metric("Top candidate", str(display_df.iloc[0]["Reduced Formula"]) if len(display_df) else "N/A")
 
     st.subheader("Export")
     export_n = st.slider("Top N to export", min_value=10, max_value=500, value=100, step=10)
-    export_df, cif_zip = build_export_bundle(filtered, app_choice, score_col, export_n)
+    export_df, cif_zip = build_export_bundle(display_df, app_choice, score_col, export_n)
     st.download_button(
         label="Download CSV (all scores + viability + CLscore)",
         data=export_df.to_csv(index=False).encode("utf-8"),
@@ -667,8 +676,8 @@ def app() -> None:
             "MaterialId", "Reduced Formula", "source", "is_experimental", score_col, "viability", "clscore", "Bandgap",
             "Formation Energy Per Atom", "Decomposition Energy Per Atom", "Crystal System",
         ]
-        show_cols = [c for c in show_cols if c in filtered.columns]
-        table_df = filtered[show_cols].head(200).copy()
+        show_cols = [c for c in show_cols if c in display_df.columns]
+        table_df = display_df[show_cols].head(200).copy()
         if "clscore" in table_df.columns:
             table_df["clscore_status"] = table_df["clscore"].apply(format_clscore)
             display_cols = show_cols + ["clscore_status"]
@@ -679,12 +688,12 @@ def app() -> None:
 
     with right:
         st.subheader("Score landscape")
-        if len(filtered):
+        if len(display_df):
             fig = px.scatter(
-                filtered,
+                display_df,
                 x="viability",
                 y=score_col,
-                color="Crystal System" if "Crystal System" in filtered.columns else None,
+                color="Crystal System" if "Crystal System" in display_df.columns else None,
                 hover_name="Reduced Formula",
                 title="Viability vs Application Score",
                 height=400,
@@ -695,11 +704,11 @@ def app() -> None:
             st.info("No rows match the filters.")
 
     st.subheader("Material detail")
-    options = filtered["Reduced Formula"].astype(str).head(200).tolist() if len(filtered) else []
+    options = display_df["Reduced Formula"].astype(str).head(200).tolist() if len(display_df) else []
     selected_formula = st.selectbox("Choose a material", options)
 
     if selected_formula:
-        row = filtered[filtered["Reduced Formula"].astype(str) == selected_formula].iloc[0].to_dict()
+        row = display_df[display_df["Reduced Formula"].astype(str) == selected_formula].iloc[0].to_dict()
         row["selected_score"] = row.get(score_col)
 
         m1, m2, m3, m4 = st.columns(4)
