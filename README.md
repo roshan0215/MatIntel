@@ -2196,396 +2196,6 @@ Penalties:
   ×0.50 if only non-photocatalytically-active elements (Zr, Al, Si, Mg alone)
   ×0.70 if band gap > 4.0 eV (transparent to solar radiation)
 ```
-
-
----
-
-## Viability Scoring
-
-The viability score is a multiplicative modifier applied to all raw application scores, capturing real-world constraints that determine whether a high-scoring material is actually usable.
-
-$$\text{weighted\_score} = \text{application\_score} \times \text{viability\_multiplier}$$
-
-The viability multiplier is itself a product of six independent components:
-
-$$V = V_{\text{cost}} \times V_{\text{abundance}} \times V_{\text{supply}} \times V_{\text{radioactive}} \times V_{\text{REE}} \times V_{\text{CLscore}}$$
-
----
-
-### Component 1: Material Cost Score
-
-**Purpose**: Materials costing more than ~$120/kg cannot be commercially deployed at scale, regardless of performance.
-
-$$V_{\text{cost}} = \max\!\left(0,\ 1 - \frac{\sum_i w_i \cdot p_i}{120}\right)$$
-
-Where $w_i$ is the weight fraction of element $i$ and $p_i$ is its price in USD/kg.
-
-**Element Price Reference Table** (USD/kg, update periodically):
-
-| Element | Price ($/kg) | Notes |
-|---------|-------------|-------|
-| Li | 8.0 | Battery-grade carbonate ~$15/kg 2024 |
-| Na, K | 0.5 | Commodity salts |
-| Mg, Al, Ca | 2–3 | Industrial metals |
-| Si | 2.5 | Abundant semiconductor |
-| Fe, Mn | 0.5–1 | Commodity metals |
-| Cu | 9 | LME spot price variable |
-| Zn | 3 | Commodity |
-| Co | 33 | Supply-concentrated (DRC); volatile |
-| Ni | 14 | Battery demand driving price |
-| Ti | 11 | Aerospace, industrial |
-| Sn | 25 | Commodity semiconductor |
-| Bi | 6 | Cheap heavy metal |
-| Sb | 6 | Supply concerns |
-| Ba | 0.3 | Barium carbonate cheap |
-| Sr | 1 | Strontium carbonate |
-| V | 30 | Ferrovanadium price-driven |
-| Mo | 40 | Molybdenite mining |
-| W | 35 | Tungsten carbide grinding |
-| Nb | 40 | Brazilian monopoly |
-| Ta | 150 | Coltan; very expensive |
-| Hf | 900 | Hafnium — refinery byproduct |
-| In | 167 | Scarce; ITO demand |
-| Ge | 1000 | Very expensive semiconductor |
-| Ga | 200 | Gallium — byproduct of Al smelting |
-| Ru | 14,000 | PGM — electrolyser catalyst |
-| Rh | 147,000 | Most expensive element |
-| Ir | 52,000 | PGM — OER catalyst |
-| Pt | 31,000 | PGM — HER benchmark |
-| Pd | 49,000 | PGM |
-| Au | 62,000 | Noble metal |
-| REEs (average) | 30–200 | Wide range; Nd ~80, Dy ~350 |
-| Unknown default | 50 | Conservative estimate |
-
----
-
-### Component 2: Elemental Abundance Score
-
-**Purpose**: Rare elements face supply shortages that persist regardless of price.
-
-$$V_{\text{abundance}} = \text{clip}\!\left(\frac{\log_{10}(\text{min\_abundance} + 0.001)}{\log_{10}(282000)},\ 0,\ 1\right)$$
-
-Where `min_abundance` is the Earth crustal abundance (ppm) of the least abundant element in the compound.
-
-**Abundance Reference** (ppm by mass in Earth's crust):
-
-| Element | Abundance (ppm) | Score |
-|---------|----------------|-------|
-| O | 461,000 | ~1.0 |
-| Si | 282,000 | 1.0 |
-| Al, Fe, Ca | 28,000–82,000 | ~0.9 |
-| Na, K, Mg | 2,000–28,000 | ~0.8 |
-| Ti, Mn | 600–900 | ~0.7 |
-| P, Ba, Sr | 170–425 | ~0.7 |
-| Zr, Cr, V | 100–165 | ~0.65 |
-| Ni, Cu, Zn | 20–80 | ~0.6 |
-| Co | 25 | ~0.6 |
-| Sn, Nb | 2 | ~0.5 |
-| Ga, Li | 15–20 | ~0.58 |
-| In | 0.25 | ~0.35 |
-| Te | 0.001 | ~0.1 |
-| REEs (average) | 1–60 | ~0.4–0.6 |
-| Pt, Ir, Rh | < 0.001 | ~0.1 |
-| Au | 0.004 | ~0.15 |
-
----
-
-### Component 3: Supply Risk Score
-
-**Purpose**: Geopolitically concentrated supply chains create risk regardless of price or abundance.
-
-$$V_{\text{supply}} = 1 - \frac{N_{\text{critical}}}{N_{\text{elements}}}$$
-
-**USGS 2023 Critical Minerals List** (50+ elements including):
-
-| Category | Elements |
-|----------|----------|
-| Light REEs | Nd, Pr, Sm, Gd, La, Ce, Y, Sc |
-| Heavy REEs | Dy, Tb, Er, Ho, Tm, Yb, Lu, Eu |
-| Battery metals | Li, Co, Ni |
-| Specialty semiconductors | Ga, Ge, In |
-| Refractory/strategic | Hf, Nb, Ta, Mo, W, Re, Sb |
-| Chalcogenide-related | Se, Te |
-| Platinum group | Pt, Pd, Rh, Ir, Ru, Os |
-| Others | Be, Bi, Cs, Rb, Sn (for electronics) |
-
----
-
-### Component 4: Radioactive Filter
-
-**Purpose**: Hard reject for materials containing radioactive elements.
-
-$$V_{\text{radioactive}} = \begin{cases} 0.0 & \text{if any radioactive element present} \\ 1.0 & \text{otherwise} \end{cases}$$
-
-**Hard-reject elements**: Ac, Th, Pa, U, Np, Pu, Am, Cm, Bk, Cf, Es, Fm, Md, No, Lr, Tc, Po, At, Rn, Fr, Ra
-
-**Note**: Bi (Z=83) is technically the heaviest stable element. Elements Z>83 are all radioactive. Some scoring functions use Z>83 as an additional proxy for this filter.
-
----
-
-### Component 5: Rare Earth Element Penalty
-
-**Tier 1 — Heavy REE (×0.30 per element)**:
-Dy, Tb, Eu, Ho, Er, Tm, Lu, Yb
-*Rationale*: Extremely high supply concentration (China >95%), lowest crustal abundance among REEs, most geopolitically sensitive.
-
-**Tier 2 — Moderate REE (×0.60 per element)**:
-Nd, Pr, Sm, Gd, Sc
-*Rationale*: Supply-constrained, essential for permanent magnets but subject to export controls.
-
-**Tier 3 — Mild REE (×0.85 per element)**:
-La, Ce, Y
-*Rationale*: Relatively abundant (La/Ce are ~60 ppm), but strategic importance justifies mild penalty.
-
-**Application override**: Permanent magnet scorer legitimately requires REEs for anisotropy — the viability penalty is accepted because (BH)max is so much higher that $/Watt still favours REE magnets for EV motors.
-
----
-
-### Component 6: CLscore Penalty
-
-$$V_{\text{CLscore}} = \begin{cases}
-1.0 & \text{CLscore} \geq 0.50 \\
-0.8 & 0.40 \leq \text{CLscore} < 0.50 \\
-0.7 & 0.30 \leq \text{CLscore} < 0.40 \\
-0.4 & 0.10 \leq \text{CLscore} < 0.30 \\
-0.1 & \text{CLscore} < 0.10 \\
-0.5 & \text{CLscore} = -1 \text{ (unknown)}
-\end{cases}$$
-
----
-
-## CLscore: Synthesizability Prediction
-
-CLscore is a **synthesizability probability** (0.0–1.0) from KAIST's Synthesizability-PU-CGCNN: a graph neural network trained on crystal structures using Positive-Unlabeled learning. It predicts whether a computationally stable crystal structure is likely to be successfully synthesized under conventional laboratory conditions (solid-state, hydrothermal, CVD, sputtering).
-
-### Architecture
-
-1. **Input**: CIF crystal structure → PyMatGen → neighbour graph (radius=8Å, max_neighbours=12)
-2. **Node features**: 92-dimensional one-hot element encoding
-3. **Edge features**: interatomic distances + pair features (up to 41 dimensions)
-4. **Graph convolution**: 3 stacked CGCNN layers with residual connections
-5. **Global pooling**: mean aggregation over all atoms
-6. **FC layers**: 128-dim hidden → 2-class softmax
-7. **Ensemble**: 100 checkpoint bags → mean probability = CLscore
-
-### Interpretation
-
-| CLscore | Interpretation | Recommended Action |
-|---------|---------------|-------------------|
-| ≥ 0.80 | Very likely synthesisable | Prioritise for experimental validation |
-| 0.50–0.80 | Likely synthesisable | Good candidate; assess synthesis route |
-| 0.30–0.50 | Moderately optimistic | Creative synthesis strategy needed |
-| 0.10–0.30 | Risky | High-pressure, unusual conditions may be required |
-| < 0.10 | Very unlikely | Kinetically trapped; unlikely accessible |
-| −1.0 | Unknown | CIF unavailable or parsing failed |
-
-### Known Limitations
-
-1. Does not model: hydrothermal, electrochemical, or sol-gel synthesis routes (solid-state bias)
-2. Does not account for high-pressure synthesis advantages (important for hydrides)
-3. Trained on DFT-relaxed structures; slightly different from experimental structures
-4. No kinetic pathway prediction — only thermodynamic/structural likelihood
-5. CIF required — materials without crystal structure files cannot be scored
-
----
-
-## Additional Datasets
-
-Beyond GNoME, the following databases can be integrated to improve coverage:
-
-| Database | Structures | Unique Value | Integration Notes |
-|----------|-----------|-------------|-----------------|
-| **AFLOW** | ~3.5M | Largest raw count; alloy/intermetallic coverage | Different DFT settings; deduplication required |
-| **JARVIS-DFT** | ~80k | Pre-computed optical properties, beyond-DFT (OptB88vdW, mbJ) | Best for solar/LED scorers (absorption spectra vs band gap proxy) |
-| **OQMD** | ~1M | Alloy/intermetallic coverage; good for magnets, anodes | Older GGA; compatible with GNoME |
-| **Materials Project** | ~154k | Rich property data: elastic, dielectric, piezo, magnetic moments | Highest data quality per entry; best for ferroelectric/piezo scorers |
-| **NOMAD** | Variable | Entries linked to experimental papers (provenance) | Best for refining is_experimental flag accuracy |
-| **CCDC (CSD)** | ~1.2M | Organic/MOF crystal structures | Relevant for CO₂ sorbent, membrane, drug delivery categories |
-| **ICSD** | ~250k | Experimental crystal structures only | Ground truth for synthesisability assessment |
-
-**Deduplication strategy**: Match on reduced formula + space group number + volume tolerance (±5%). When duplicates exist, prefer: ICSD > Materials Project > JARVIS > OQMD > AFLOW > GNoME for property data quality.
-
----
-
-## Pipeline Architecture
-
-```
-src/matintel/
-├── config.py              # APP_LABELS (71 apps), element prices, critical minerals
-├── data_sources.py        # Multi-database load/validation, schema normalisation
-├── features.py            # Matminer feature extraction (138 features)
-├── scoring.py             # 71-category scoring functions + registry
-├── viability.py           # Cost, abundance, supply risk, radioactivity, REE, CLscore
-├── clscore.py             # CLscore prediction wrapper (KAIST integration)
-├── pipeline.py            # Orchestration: load → featurize → score → viability
-├── deduplication.py       # Cross-database duplicate detection and merging
-└── explanations.py        # AI summary generation for top candidates
-```
-
----
-
-## Installation & Setup
-
-### Prerequisites
-
-- Python 3.10+ (3.13 tested)
-- Windows PowerShell 5.1+ (primary OS) or Linux/macOS bash
-- ~8 GB disk (GNoME CIFs + pip packages + additional databases)
-
-### Step 1: Clone and Environment
-
-```powershell
-cd c:\Users\rosha\Downloads\MatIntel
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-```
-
-### Step 2: Primary Data Download
-
-```powershell
-./scripts/download_gnome_csv.ps1        # GNoME metadata CSV (~500 MB)
-./scripts/download_gnome_cifs.ps1       # CIF files (~455 MB, for CLscore)
-```
-
-### Step 3: Optional Additional Databases
-
-```powershell
-./scripts/download_jarvis.ps1           # JARVIS-DFT JSON (~200 MB)
-./scripts/download_mp_experimental.ps1 # Materials Project experimental set
-./scripts/build_experimental_reference.py  # Requires MP_API_KEY env var
-```
-
-### Step 4: CLscore Setup
-
-```powershell
-./scripts/setup_clscore.ps1  # Clones KAIST repo, installs torch, verifies checkpoints
-```
-
----
-
-## Running the System
-
-### Full Pipeline
-
-```powershell
-./scripts/run_pipeline.ps1    # Load → Featurize → Score (71 apps) → Viability → Export
-./scripts/run_app.ps1          # Launch Streamlit dashboard at http://localhost:8501
-```
-
-### CLscore Batch Processing
-
-```powershell
-# Score top 1000 candidates for a specific application
-python run_clscore.py --app solar_singlejunction --top-n 1000 --cif-dir data/cifs
-
-# Score all 554k materials in speed mode (1 checkpoint, ~7 hours)
-python run_clscore_all.py --output-csv data/processed/clscore_all_results.csv --max-models 1
-
-# Recompute unknown CLscores only
-python run_clscore_all.py --recompute-unknown
-```
-
-### Export Outputs
-
-From the Streamlit dashboard:
-- Ranked CSV export for any application
-- CIF ZIP archive for top candidates
-- PDF summary report with scoring breakdown
-
----
-
-## File Outputs
-
-| File | Description |
-|------|-------------|
-| `data/processed/working_dataset.csv` | Validated input data, pre-feature |
-| `data/processed/featured_dataset.csv` | + 138 matminer features |
-| `data/processed/scored_dataset.csv` | + 71 score columns, viability, CLscore, best_score |
-| `data/processed/clscore_all_results.csv` | CLscore cache (resumable) |
-| `data/processed/experimental_compounds.csv` | MP/JARVIS experimental reference set |
-| `data/processed/top10_per_category.csv` | Top 10 per app (viability-adjusted) with explicit provenance columns |
-| `data/processed/top10_per_category_raw_score.csv` | Top 10 per app (raw score) with explicit provenance columns |
-| `logs/pipeline.log` | Timestamped execution log |
-
----
-
-## Top-10 Snapshot (Current Data)
-
-The following values are taken directly from:
-
-- `data/processed/top10_per_category.csv`
-- `data/processed/top10_per_category_raw_score.csv`
-
-Snapshot date: **2026-04-07**
-
-### Dataset-Level Facts
-
-- Active categories: **71** (matches `src/matintel/config.py` `APP_LABELS` length)
-- Rows in weighted top-10 file: **710** (= 71 x 10)
-- Rows in raw top-10 file: **710** (= 71 x 10)
-- Weighted file provenance split: **73.8% Synthesized** (524/710), **26.2% Experimental** (186/710)
-- Raw file provenance split: **70.6% Synthesized**, **29.4% Experimental**
-- Top-10 exports enforce one representative per reduced formula per category to prevent repeated polymorph runs.
-
-### Most Frequent Formulas Across Weighted Category Top-10
-
-| Reduced Formula | Count Across 71 Category Top-10 Lists |
-|----------------|-----------------------------------------|
-| `Fe2SiO4` | 17 |
-| `Fe7SiO10` | 12 |
-| `Fe3O4` | 10 |
-| `Fe4O5` | 9 |
-| `FeCuO2` | 9 |
-| `FeSiO3` | 9 |
-| `FeO` | 9 |
-| `Fe2O3` | 8 |
-| `Fe5(SiO4)3` | 8 |
-| `CaFe5O7` | 8 |
-
-### Categories With Highest Mean Weighted Score (Top 12)
-
-| Category | Mean Weighted Score | Mean Viability | Mean CLscore |
-|----------|---------------------|----------------|--------------|
-| OER Electrocatalyst (Water Splitting) | 0.7699 | 0.770 | 0.936 |
-| Soft Magnet | 0.7367 | 0.819 | 0.934 |
-| Spintronic MTJ (Magnetic Tunnel Junction) | 0.7342 | 0.773 | 0.882 |
-| Battery Anode | 0.7311 | 0.731 | 0.850 |
-| 2D Material | 0.7216 | 0.802 | 0.916 |
-| Photocatalytic CO2 Reduction | 0.7179 | 0.718 | 0.877 |
-| Semiconductor (General) | 0.7158 | 0.754 | 0.929 |
-| Nitrogen Reduction Reaction (NRR) Catalyst | 0.7045 | 0.783 | 0.879 |
-| Memristor / Neuromorphic Computing Material | 0.6992 | 0.736 | 0.912 |
-| Superconductor | 0.6987 | 0.706 | 0.842 |
-| Biodegradable Implant | 0.6960 | 0.773 | 0.933 |
-| Supercapacitor Electrode | 0.6948 | 0.772 | 0.939 |
-
-### Representative #1 Candidates (Weighted Top-10)
-
-| Category | MaterialId | Formula | Weighted Score | Viability | CLscore | Provenance |
-|----------|------------|---------|----------------|-----------|---------|------------|
-| Battery Cathode (Li-ion) | `mp-554014` | `Li2Cu5(Si2O7)2` | 0.6255 | 0.695 | 0.929 | Synthesized |
-| CO2 Capture Sorbent | `mp-27492` | `CaFe5O7` | 0.6831 | 0.759 | 0.965 | Synthesized |
-| Hydrogen Storage | `d5928a4f76` | `Al2Fe6H` | 0.5677 | 0.757 | 0.785 | Experimental |
-| Nuclear Fuel Cladding | `mp-871` | `FeSi` | 0.6978 | 0.821 | 0.885 | Synthesized |
-| Qubit Host Material | `mp-11713` | `SiC` | 0.6096 | 0.762 | 0.821 | Synthesized |
-| Superconductor | `mp-1105138` | `SrFe4(CuO4)3` | 0.7326 | 0.740 | 0.938 | Synthesized |
-
----
-
-## References
-
-- **GNoME Dataset**: Merchant et al., Nature 624, 80–85 (2023). Google DeepMind.
-- **CLscore Model**: Noh et al., Matter 3, 873–891 (2020). KAIST Synthesizability-PU-CGCNN.
-- **Materials Project**: Jain et al., APL Materials 1, 011002 (2013).
-- **JARVIS-DFT**: Choudhary et al., npj Computational Materials 6, 173 (2020).
-- **AFLOW**: Curtarolo et al., Computational Materials Science 58, 218–226 (2012).
-- **OQMD**: Kirklin et al., npj Computational Materials 1, 15010 (2015).
-- **Matminer**: Ward et al., Computational Materials Science 152, 60–69 (2018).
-- **Shockley-Queisser limit**: Shockley & Queisser, Journal of Applied Physics 32, 510 (1961).
-- **USGS Critical Minerals 2023**: https://www.usgs.gov/critical-minerals
-
-
 ---
 
 ## Domain 9: Nuclear & Extreme Environment
@@ -3587,11 +3197,388 @@ Penalties:
 
 ---
 
-## Summary Validation
+## Viability Scoring
 
-- The authoritative category registry is `src/matintel/config.py` (`APP_LABELS`) with **71** active categories.
-- This README includes detailed scoring logic for **71** categories (sections `### 1` to `### 71`).
-- The category logic is implemented in `src/matintel/scoring.py` and consumed by the Streamlit ranking workflow in `app.py`.
-- `scripts/rebuild_top10.py` regenerates both 710-row top-10 exports (`71 × 10`), with formula-level deduplication per category.
-- Provenance in exported rankings is explicit: `Experimental (NOT synthesized yet)` vs `Synthesized (already synthesized/known)`.
+The viability score is a multiplicative modifier applied to all raw application scores, capturing real-world constraints that determine whether a high-scoring material is actually usable.
+
+$$\text{weighted\_score} = \text{application\_score} \times \text{viability\_multiplier}$$
+
+The viability multiplier is itself a product of six independent components:
+
+$$V = V_{\text{cost}} \times V_{\text{abundance}} \times V_{\text{supply}} \times V_{\text{radioactive}} \times V_{\text{REE}} \times V_{\text{CLscore}}$$
+
+---
+
+### Component 1: Material Cost Score
+
+**Purpose**: Materials costing more than ~$120/kg cannot be commercially deployed at scale, regardless of performance.
+
+$$V_{\text{cost}} = \max\!\left(0,\ 1 - \frac{\sum_i w_i \cdot p_i}{120}\right)$$
+
+Where $w_i$ is the weight fraction of element $i$ and $p_i$ is its price in USD/kg.
+
+**Element Price Reference Table** (USD/kg, update periodically):
+
+| Element | Price ($/kg) | Notes |
+|---------|-------------|-------|
+| Li | 8.0 | Battery-grade carbonate ~$15/kg 2024 |
+| Na, K | 0.5 | Commodity salts |
+| Mg, Al, Ca | 2–3 | Industrial metals |
+| Si | 2.5 | Abundant semiconductor |
+| Fe, Mn | 0.5–1 | Commodity metals |
+| Cu | 9 | LME spot price variable |
+| Zn | 3 | Commodity |
+| Co | 33 | Supply-concentrated (DRC); volatile |
+| Ni | 14 | Battery demand driving price |
+| Ti | 11 | Aerospace, industrial |
+| Sn | 25 | Commodity semiconductor |
+| Bi | 6 | Cheap heavy metal |
+| Sb | 6 | Supply concerns |
+| Ba | 0.3 | Barium carbonate cheap |
+| Sr | 1 | Strontium carbonate |
+| V | 30 | Ferrovanadium price-driven |
+| Mo | 40 | Molybdenite mining |
+| W | 35 | Tungsten carbide grinding |
+| Nb | 40 | Brazilian monopoly |
+| Ta | 150 | Coltan; very expensive |
+| Hf | 900 | Hafnium — refinery byproduct |
+| In | 167 | Scarce; ITO demand |
+| Ge | 1000 | Very expensive semiconductor |
+| Ga | 200 | Gallium — byproduct of Al smelting |
+| Ru | 14,000 | PGM — electrolyser catalyst |
+| Rh | 147,000 | Most expensive element |
+| Ir | 52,000 | PGM — OER catalyst |
+| Pt | 31,000 | PGM — HER benchmark |
+| Pd | 49,000 | PGM |
+| Au | 62,000 | Noble metal |
+| REEs (average) | 30–200 | Wide range; Nd ~80, Dy ~350 |
+| Unknown default | 50 | Conservative estimate |
+
+---
+
+### Component 2: Elemental Abundance Score
+
+**Purpose**: Rare elements face supply shortages that persist regardless of price.
+
+$$V_{\text{abundance}} = \text{clip}\!\left(\frac{\log_{10}(\text{min\_abundance} + 0.001)}{\log_{10}(282000)},\ 0,\ 1\right)$$
+
+Where `min_abundance` is the Earth crustal abundance (ppm) of the least abundant element in the compound.
+
+**Abundance Reference** (ppm by mass in Earth's crust):
+
+| Element | Abundance (ppm) | Score |
+|---------|----------------|-------|
+| O | 461,000 | ~1.0 |
+| Si | 282,000 | 1.0 |
+| Al, Fe, Ca | 28,000–82,000 | ~0.9 |
+| Na, K, Mg | 2,000–28,000 | ~0.8 |
+| Ti, Mn | 600–900 | ~0.7 |
+| P, Ba, Sr | 170–425 | ~0.7 |
+| Zr, Cr, V | 100–165 | ~0.65 |
+| Ni, Cu, Zn | 20–80 | ~0.6 |
+| Co | 25 | ~0.6 |
+| Sn, Nb | 2 | ~0.5 |
+| Ga, Li | 15–20 | ~0.58 |
+| In | 0.25 | ~0.35 |
+| Te | 0.001 | ~0.1 |
+| REEs (average) | 1–60 | ~0.4–0.6 |
+| Pt, Ir, Rh | < 0.001 | ~0.1 |
+| Au | 0.004 | ~0.15 |
+
+---
+
+### Component 3: Supply Risk Score
+
+**Purpose**: Geopolitically concentrated supply chains create risk regardless of price or abundance.
+
+$$V_{\text{supply}} = 1 - \frac{N_{\text{critical}}}{N_{\text{elements}}}$$
+
+**USGS 2023 Critical Minerals List** (50+ elements including):
+
+| Category | Elements |
+|----------|----------|
+| Light REEs | Nd, Pr, Sm, Gd, La, Ce, Y, Sc |
+| Heavy REEs | Dy, Tb, Er, Ho, Tm, Yb, Lu, Eu |
+| Battery metals | Li, Co, Ni |
+| Specialty semiconductors | Ga, Ge, In |
+| Refractory/strategic | Hf, Nb, Ta, Mo, W, Re, Sb |
+| Chalcogenide-related | Se, Te |
+| Platinum group | Pt, Pd, Rh, Ir, Ru, Os |
+| Others | Be, Bi, Cs, Rb, Sn (for electronics) |
+
+---
+
+### Component 4: Radioactive Filter
+
+**Purpose**: Hard reject for materials containing radioactive elements.
+
+$$V_{\text{radioactive}} = \begin{cases} 0.0 & \text{if any radioactive element present} \\ 1.0 & \text{otherwise} \end{cases}$$
+
+**Hard-reject elements**: Ac, Th, Pa, U, Np, Pu, Am, Cm, Bk, Cf, Es, Fm, Md, No, Lr, Tc, Po, At, Rn, Fr, Ra
+
+**Note**: Bi (Z=83) is technically the heaviest stable element. Elements Z>83 are all radioactive. Some scoring functions use Z>83 as an additional proxy for this filter.
+
+---
+
+### Component 5: Rare Earth Element Penalty
+
+**Tier 1 — Heavy REE (×0.30 per element)**:
+Dy, Tb, Eu, Ho, Er, Tm, Lu, Yb
+*Rationale*: Extremely high supply concentration (China >95%), lowest crustal abundance among REEs, most geopolitically sensitive.
+
+**Tier 2 — Moderate REE (×0.60 per element)**:
+Nd, Pr, Sm, Gd, Sc
+*Rationale*: Supply-constrained, essential for permanent magnets but subject to export controls.
+
+**Tier 3 — Mild REE (×0.85 per element)**:
+La, Ce, Y
+*Rationale*: Relatively abundant (La/Ce are ~60 ppm), but strategic importance justifies mild penalty.
+
+**Application override**: Permanent magnet scorer legitimately requires REEs for anisotropy — the viability penalty is accepted because (BH)max is so much higher that $/Watt still favours REE magnets for EV motors.
+
+---
+
+### Component 6: CLscore Penalty
+
+$$V_{\text{CLscore}} = \begin{cases}
+1.0 & \text{CLscore} \geq 0.50 \\
+0.8 & 0.40 \leq \text{CLscore} < 0.50 \\
+0.7 & 0.30 \leq \text{CLscore} < 0.40 \\
+0.4 & 0.10 \leq \text{CLscore} < 0.30 \\
+0.1 & \text{CLscore} < 0.10 \\
+0.5 & \text{CLscore} = -1 \text{ (unknown)}
+\end{cases}$$
+
+---
+
+## CLscore: Synthesizability Prediction
+
+CLscore is a **synthesizability probability** (0.0–1.0) from KAIST's Synthesizability-PU-CGCNN: a graph neural network trained on crystal structures using Positive-Unlabeled learning. It predicts whether a computationally stable crystal structure is likely to be successfully synthesized under conventional laboratory conditions (solid-state, hydrothermal, CVD, sputtering).
+
+### Architecture
+
+1. **Input**: CIF crystal structure → PyMatGen → neighbour graph (radius=8Å, max_neighbours=12)
+2. **Node features**: 92-dimensional one-hot element encoding
+3. **Edge features**: interatomic distances + pair features (up to 41 dimensions)
+4. **Graph convolution**: 3 stacked CGCNN layers with residual connections
+5. **Global pooling**: mean aggregation over all atoms
+6. **FC layers**: 128-dim hidden → 2-class softmax
+7. **Ensemble**: 100 checkpoint bags → mean probability = CLscore
+
+### Interpretation
+
+| CLscore | Interpretation | Recommended Action |
+|---------|---------------|-------------------|
+| ≥ 0.80 | Very likely synthesisable | Prioritise for experimental validation |
+| 0.50–0.80 | Likely synthesisable | Good candidate; assess synthesis route |
+| 0.30–0.50 | Moderately optimistic | Creative synthesis strategy needed |
+| 0.10–0.30 | Risky | High-pressure, unusual conditions may be required |
+| < 0.10 | Very unlikely | Kinetically trapped; unlikely accessible |
+| −1.0 | Unknown | CIF unavailable or parsing failed |
+
+### Known Limitations
+
+1. Does not model: hydrothermal, electrochemical, or sol-gel synthesis routes (solid-state bias)
+2. Does not account for high-pressure synthesis advantages (important for hydrides)
+3. Trained on DFT-relaxed structures; slightly different from experimental structures
+4. No kinetic pathway prediction — only thermodynamic/structural likelihood
+5. CIF required — materials without crystal structure files cannot be scored
+
+---
+
+## Additional Datasets
+
+Beyond GNoME, the following databases can be integrated to improve coverage:
+
+| Database | Structures | Unique Value | Integration Notes |
+|----------|-----------|-------------|-----------------|
+| **AFLOW** | ~3.5M | Largest raw count; alloy/intermetallic coverage | Different DFT settings; deduplication required |
+| **JARVIS-DFT** | ~80k | Pre-computed optical properties, beyond-DFT (OptB88vdW, mbJ) | Best for solar/LED scorers (absorption spectra vs band gap proxy) |
+| **OQMD** | ~1M | Alloy/intermetallic coverage; good for magnets, anodes | Older GGA; compatible with GNoME |
+| **Materials Project** | ~154k | Rich property data: elastic, dielectric, piezo, magnetic moments | Highest data quality per entry; best for ferroelectric/piezo scorers |
+| **NOMAD** | Variable | Entries linked to experimental papers (provenance) | Best for refining is_experimental flag accuracy |
+| **CCDC (CSD)** | ~1.2M | Organic/MOF crystal structures | Relevant for CO₂ sorbent, membrane, drug delivery categories |
+| **ICSD** | ~250k | Experimental crystal structures only | Ground truth for synthesisability assessment |
+
+**Deduplication strategy**: Match on reduced formula + space group number + volume tolerance (±5%). When duplicates exist, prefer: ICSD > Materials Project > JARVIS > OQMD > AFLOW > GNoME for property data quality.
+
+---
+
+## Pipeline Architecture
+
+```
+src/matintel/
+├── config.py              # APP_LABELS (71 apps), element prices, critical minerals
+├── data_sources.py        # Multi-database load/validation, schema normalisation
+├── features.py            # Matminer feature extraction (138 features)
+├── scoring.py             # 71-category scoring functions + registry
+├── viability.py           # Cost, abundance, supply risk, radioactivity, REE, CLscore
+├── clscore.py             # CLscore prediction wrapper (KAIST integration)
+├── pipeline.py            # Orchestration: load → featurize → score → viability
+├── deduplication.py       # Cross-database duplicate detection and merging
+└── explanations.py        # AI summary generation for top candidates
+```
+
+---
+
+## Installation & Setup
+
+### Prerequisites
+
+- Python 3.10+ (3.13 tested)
+- Windows PowerShell 5.1+ (primary OS) or Linux/macOS bash
+- ~8 GB disk (GNoME CIFs + pip packages + additional databases)
+
+### Step 1: Clone and Environment
+
+```powershell
+cd c:\Users\rosha\Downloads\MatIntel
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
+### Step 2: Primary Data Download
+
+```powershell
+./scripts/download_gnome_csv.ps1        # GNoME metadata CSV (~500 MB)
+./scripts/download_gnome_cifs.ps1       # CIF files (~455 MB, for CLscore)
+```
+
+### Step 3: Optional Additional Databases
+
+```powershell
+./scripts/download_jarvis.ps1           # JARVIS-DFT JSON (~200 MB)
+./scripts/download_mp_experimental.ps1 # Materials Project experimental set
+./scripts/build_experimental_reference.py  # Requires MP_API_KEY env var
+```
+
+### Step 4: CLscore Setup
+
+```powershell
+./scripts/setup_clscore.ps1  # Clones KAIST repo, installs torch, verifies checkpoints
+```
+
+---
+
+## Running the System
+
+### Full Pipeline
+
+```powershell
+./scripts/run_pipeline.ps1    # Load → Featurize → Score (71 apps) → Viability → Export
+./scripts/run_app.ps1          # Launch Streamlit dashboard at http://localhost:8501
+```
+
+### CLscore Batch Processing
+
+```powershell
+# Score top 1000 candidates for a specific application
+python run_clscore.py --app solar_singlejunction --top-n 1000 --cif-dir data/cifs
+
+# Score all 554k materials in speed mode (1 checkpoint, ~7 hours)
+python run_clscore_all.py --output-csv data/processed/clscore_all_results.csv --max-models 1
+
+# Recompute unknown CLscores only
+python run_clscore_all.py --recompute-unknown
+```
+
+### Export Outputs
+
+From the Streamlit dashboard:
+- Ranked CSV export for any application
+- CIF ZIP archive for top candidates
+- PDF summary report with scoring breakdown
+
+---
+
+## File Outputs
+
+| File | Description |
+|------|-------------|
+| `data/processed/working_dataset.csv` | Validated input data, pre-feature |
+| `data/processed/featured_dataset.csv` | + 138 matminer features |
+| `data/processed/scored_dataset.csv` | + 71 score columns, viability, CLscore, best_score |
+| `data/processed/clscore_all_results.csv` | CLscore cache (resumable) |
+| `data/processed/experimental_compounds.csv` | MP/JARVIS experimental reference set |
+| `data/processed/top10_per_category.csv` | Top 10 per app (viability-adjusted) with explicit provenance columns |
+| `data/processed/top10_per_category_raw_score.csv` | Top 10 per app (raw score) with explicit provenance columns |
+| `logs/pipeline.log` | Timestamped execution log |
+
+---
+
+## Top-10 Snapshot (Current Data)
+
+The following values are taken directly from:
+
+- `data/processed/top10_per_category.csv`
+- `data/processed/top10_per_category_raw_score.csv`
+
+Snapshot date: **2026-04-07**
+
+### Dataset-Level Facts
+
+- Active categories: **71** (matches `src/matintel/config.py` `APP_LABELS` length)
+- Rows in weighted top-10 file: **710** (= 71 x 10)
+- Rows in raw top-10 file: **710** (= 71 x 10)
+- Weighted file provenance split: **73.8% Synthesized** (524/710), **26.2% Experimental** (186/710)
+- Raw file provenance split: **70.6% Synthesized**, **29.4% Experimental**
+- Top-10 exports enforce one representative per reduced formula per category to prevent repeated polymorph runs.
+
+### Most Frequent Formulas Across Weighted Category Top-10
+
+| Reduced Formula | Count Across 71 Category Top-10 Lists |
+|----------------|-----------------------------------------|
+| `Fe2SiO4` | 17 |
+| `Fe7SiO10` | 12 |
+| `Fe3O4` | 10 |
+| `Fe4O5` | 9 |
+| `FeCuO2` | 9 |
+| `FeSiO3` | 9 |
+| `FeO` | 9 |
+| `Fe2O3` | 8 |
+| `Fe5(SiO4)3` | 8 |
+| `CaFe5O7` | 8 |
+
+### Categories With Highest Mean Weighted Score (Top 12)
+
+| Category | Mean Weighted Score | Mean Viability | Mean CLscore |
+|----------|---------------------|----------------|--------------|
+| OER Electrocatalyst (Water Splitting) | 0.7699 | 0.770 | 0.936 |
+| Soft Magnet | 0.7367 | 0.819 | 0.934 |
+| Spintronic MTJ (Magnetic Tunnel Junction) | 0.7342 | 0.773 | 0.882 |
+| Battery Anode | 0.7311 | 0.731 | 0.850 |
+| 2D Material | 0.7216 | 0.802 | 0.916 |
+| Photocatalytic CO2 Reduction | 0.7179 | 0.718 | 0.877 |
+| Semiconductor (General) | 0.7158 | 0.754 | 0.929 |
+| Nitrogen Reduction Reaction (NRR) Catalyst | 0.7045 | 0.783 | 0.879 |
+| Memristor / Neuromorphic Computing Material | 0.6992 | 0.736 | 0.912 |
+| Superconductor | 0.6987 | 0.706 | 0.842 |
+| Biodegradable Implant | 0.6960 | 0.773 | 0.933 |
+| Supercapacitor Electrode | 0.6948 | 0.772 | 0.939 |
+
+### Representative #1 Candidates (Weighted Top-10)
+
+| Category | MaterialId | Formula | Weighted Score | Viability | CLscore | Provenance |
+|----------|------------|---------|----------------|-----------|---------|------------|
+| Battery Cathode (Li-ion) | `mp-554014` | `Li2Cu5(Si2O7)2` | 0.6255 | 0.695 | 0.929 | Synthesized |
+| CO2 Capture Sorbent | `mp-27492` | `CaFe5O7` | 0.6831 | 0.759 | 0.965 | Synthesized |
+| Hydrogen Storage | `d5928a4f76` | `Al2Fe6H` | 0.5677 | 0.757 | 0.785 | Experimental |
+| Nuclear Fuel Cladding | `mp-871` | `FeSi` | 0.6978 | 0.821 | 0.885 | Synthesized |
+| Qubit Host Material | `mp-11713` | `SiC` | 0.6096 | 0.762 | 0.821 | Synthesized |
+| Superconductor | `mp-1105138` | `SrFe4(CuO4)3` | 0.7326 | 0.740 | 0.938 | Synthesized |
+
+---
+
+## References
+
+- **GNoME Dataset**: Merchant et al., Nature 624, 80–85 (2023). Google DeepMind.
+- **CLscore Model**: Noh et al., Matter 3, 873–891 (2020). KAIST Synthesizability-PU-CGCNN.
+- **Materials Project**: Jain et al., APL Materials 1, 011002 (2013).
+- **JARVIS-DFT**: Choudhary et al., npj Computational Materials 6, 173 (2020).
+- **AFLOW**: Curtarolo et al., Computational Materials Science 58, 218–226 (2012).
+- **OQMD**: Kirklin et al., npj Computational Materials 1, 15010 (2015).
+- **Matminer**: Ward et al., Computational Materials Science 152, 60–69 (2018).
+- **Shockley-Queisser limit**: Shockley & Queisser, Journal of Applied Physics 32, 510 (1961).
+- **USGS Critical Minerals 2023**: https://www.usgs.gov/critical-minerals
 
